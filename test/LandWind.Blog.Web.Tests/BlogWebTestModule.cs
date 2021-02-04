@@ -17,8 +17,7 @@ using Volo.Abp.Validation.Localization;
 namespace LandWind.Blog
 {
     [DependsOn(
-        typeof(AbpAspNetCoreTestBaseModule),
-        typeof(BlogWebModule),
+        typeof(AbpAspNetCoreTestBaseModule), 
         typeof(BlogApplicationTestModule)
     )]
     public class BlogWebTestModule : AbpModule
