@@ -14,7 +14,7 @@ namespace LandWind.Blog.HttpApi.Hosting
         typeof(AbpAutofacModule),
         typeof(LandWindBlogHttpApiModule),
         typeof(LandWindBlogSwaggerModule),
-        typeof(LandWindBlogEntityFrameworkCoreModule)
+        typeof(LandWindBlogEFCoreModule)
         )]
     public class LandWindBlogHttpApiHostingModule:AbpModule
     {

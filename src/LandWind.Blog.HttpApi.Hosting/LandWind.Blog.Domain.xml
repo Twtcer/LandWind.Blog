@@ -4,5 +4,90 @@
         <name>LandWind.Blog.Domain</name>
     </assembly>
     <members>
+        <member name="T:LandWind.Blog.Domain.Configurations.Appsettings">
+            <summary>
+            appsettings.jso配置类
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Category.CategoryName">
+            <summary>
+            分类名称
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Category.DisplayName">
+            <summary>
+            展示名称
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.FriendLink.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.FriendLink.LinkUrl">
+            <summary>
+            链接
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Domain.Entities.Post">
+            <summary>
+            post 文章
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Post.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Post.Author">
+            <summary>
+            作者
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Post.Url">
+            <summary>
+            链接
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Post.Html">
+            <summary>
+            HTML
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Post.Markdown">
+            <summary>
+            Markdown
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Post.CategoryId">
+            <summary>
+            分类Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Post.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.PostTag.PostId">
+            <summary>
+            文章Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.PostTag.TagId">
+            <summary>
+            标签Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Tag.TagName">
+            <summary>
+            标签名称
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Domain.Entities.Tag.DisplayName">
+            <summary>
+            展示名称
+            </summary>
+        </member>
     </members>
 </doc>

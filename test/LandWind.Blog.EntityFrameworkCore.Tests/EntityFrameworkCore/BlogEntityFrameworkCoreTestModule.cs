@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using LandWind.Blog.EntityFrameworkCore.DbMigrations;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -11,7 +12,7 @@ using Volo.Abp.Modularity;
 namespace LandWind.Blog.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(BlogEntityFrameworkCoreDbMigrationsModule),
+        typeof(LandWindBlogEFCoreModule),
         typeof(BlogTestBaseModule),
         typeof(AbpEntityFrameworkCoreSqliteModule)
         )]
@@ -47,11 +48,11 @@ namespace LandWind.Blog.EntityFrameworkCore
             var connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
 
-            var options = new DbContextOptionsBuilder<BlogMigrationsDbContext>()
+            var options = new DbContextOptionsBuilder<LandWindBlogDbContext>()
                 .UseSqlite(connection)
                 .Options;
 
-            using (var context = new BlogMigrationsDbContext(options))
+            using (var context = new LandWindBlogDbContext(options))
             {
                 context.GetService<IRelationalDatabaseCreator>().CreateTables();
             }
