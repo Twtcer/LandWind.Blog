@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LandWind.Blog.Web
+namespace LandWind.Blog.HttpApi.Hosting
 {
     public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApplication<BlogWebModule>();
+            services.AddApplication<LandWindBlogHttpApiHostingModule>();
         }
 
         public void Configure(IApplicationBuilder app)

@@ -1,10 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using LandWind.Blog.Domain;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Authorization;
 using Volo.Abp.Autofac;
-using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Data;
-using Volo.Abp.IdentityServer;
 using Volo.Abp.Modularity;
 using Volo.Abp.Threading;
 
@@ -14,49 +13,49 @@ namespace LandWind.Blog
         typeof(AbpAutofacModule),
         typeof(AbpTestBaseModule),
         typeof(AbpAuthorizationModule),
-        typeof(BlogDomainModule)
+        typeof(LandWindBlogDomainModule)
         )]
     public class BlogTestBaseModule : AbpModule
     {
-        public override void PreConfigureServices(ServiceConfigurationContext context)
-        {
-            PreConfigure<AbpIdentityServerBuilderOptions>(options =>
-            {
-                options.AddDeveloperSigningCredential = false;
-            });
+        //public override void PreConfigureServices(ServiceConfigurationContext context)
+        //{
+        //    PreConfigure<AbpIdentityServerBuilderOptions>(options =>
+        //    {
+        //        options.AddDeveloperSigningCredential = false;
+        //    });
 
-            PreConfigure<IIdentityServerBuilder>(identityServerBuilder =>
-            {
-                identityServerBuilder.AddDeveloperSigningCredential(false, System.Guid.NewGuid().ToString());
-            });
-        }
+        //    PreConfigure<IIdentityServerBuilder>(identityServerBuilder =>
+        //    {
+        //        identityServerBuilder.AddDeveloperSigningCredential(false, System.Guid.NewGuid().ToString());
+        //    });
+        //}
 
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-            Configure<AbpBackgroundJobOptions>(options =>
-            {
-                options.IsJobExecutionEnabled = false;
-            });
+        //public override void ConfigureServices(ServiceConfigurationContext context)
+        //{
+        //    Configure<AbpBackgroundJobOptions>(options =>
+        //    {
+        //        options.IsJobExecutionEnabled = false;
+        //    });
 
-            context.Services.AddAlwaysAllowAuthorization();
-        }
+        //    context.Services.AddAlwaysAllowAuthorization();
+        //}
 
-        public override void OnApplicationInitialization(ApplicationInitializationContext context)
-        {
-            SeedTestData(context);
-        }
+        //public override void OnApplicationInitialization(ApplicationInitializationContext context)
+        //{
+        //    SeedTestData(context);
+        //}
 
-        private static void SeedTestData(ApplicationInitializationContext context)
-        {
-            AsyncHelper.RunSync(async () =>
-            {
-                using (var scope = context.ServiceProvider.CreateScope())
-                {
-                    await scope.ServiceProvider
-                        .GetRequiredService<IDataSeeder>()
-                        .SeedAsync();
-                }
-            });
-        }
+        //private static void SeedTestData(ApplicationInitializationContext context)
+        //{
+        //    AsyncHelper.RunSync(async () =>
+        //    {
+        //        using (var scope = context.ServiceProvider.CreateScope())
+        //        {
+        //            await scope.ServiceProvider
+        //                .GetRequiredService<IDataSeeder>()
+        //                .SeedAsync();
+        //        }
+        //    });
+        //}
     }
 }

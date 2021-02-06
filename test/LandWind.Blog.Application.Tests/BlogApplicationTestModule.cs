@@ -3,7 +3,7 @@
 namespace LandWind.Blog
 {
     [DependsOn(
-        typeof(BlogApplicationModule),
+        typeof(LandWindBlogApplicationModule),
         typeof(BlogDomainTestModule)
         )]
     public class BlogApplicationTestModule : AbpModule

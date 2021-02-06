@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <Import Project="..\..\common.props" />
 
@@ -18,42 +18,15 @@
     <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Logs\**" />
-    <Content Remove="Logs\**" />
-    <EmbeddedResource Remove="Logs\**" />
-    <None Remove="Logs\**" />
+  <ItemGroup> 
+    <ProjectReference Include="..\LandWind.Blog.EntityFrameworkCore\LandWind.Blog.EntityFrameworkCore.csproj" /> 
+    <ProjectReference Include="..\LandWind.Blog.HttpApi\LandWind.Blog.HttpApi.csproj" /> 
+    <ProjectReference Include="..\LandWind.Blog.Swagger\LandWind.Blog.Swagger.csproj" /> 
+    <PackageReference Include="Volo.Abp.Autofac" Version="4.2.0" /> 
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Pages\**\*.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Pages\**\*.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
-    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
-    <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\LandWind.Blog.Application\LandWind.Blog.Application.csproj" />
-    <ProjectReference Include="..\LandWind.Blog.HttpApi\LandWind.Blog.HttpApi.csproj" />
-    <ProjectReference Include="..\LandWind.Blog.EntityFrameworkCore.DbMigrations\LandWind.Blog.EntityFrameworkCore.DbMigrations.csproj" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="4.2.0" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="4.2.0" />
-    <PackageReference Include="Volo.Abp.Swashbuckle" Version="4.2.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.JwtBearer" Version="4.2.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="4.2.0" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="4.2.0" />
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="4.2.0" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="4.2.0" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Web" Version="4.2.0" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>
