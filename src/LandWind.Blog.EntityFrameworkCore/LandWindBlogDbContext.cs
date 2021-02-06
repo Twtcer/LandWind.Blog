@@ -5,7 +5,7 @@ using Volo.Abp.EntityFrameworkCore;
 
 namespace LandWind.Blog.EntityFrameworkCore
 {
-    [ConnectionStringName("MySql")]
+    [ConnectionStringName("SqlServer")]
     public class LandWindBlogDbContext : AbpDbContext<LandWindBlogDbContext>
     {
         public LandWindBlogDbContext(DbContextOptions<LandWindBlogDbContext> options):base(options)

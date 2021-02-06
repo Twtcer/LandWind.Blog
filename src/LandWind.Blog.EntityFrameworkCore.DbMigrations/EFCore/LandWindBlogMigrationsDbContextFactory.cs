@@ -17,7 +17,8 @@ namespace LandWind.Blog.EntityFrameworkCore.DbMigrations
         {
            var config = BuildConfiguration();
             var builder = new DbContextOptionsBuilder<LandWindBlogMigrationsDbContext>()
-                   .UseSqlServer(config.GetConnectionString("DefaultConnection"));
+                   //.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+                   .UseSqlServer("Data Source=192.168.123.188,4133;User Id=sa;Password=sa123SA!@#;Initial Catalog=LandWindBlogDb;Pooling=true;Min Pool Size=1");
              
             return new LandWindBlogMigrationsDbContext(builder.Options);
         }

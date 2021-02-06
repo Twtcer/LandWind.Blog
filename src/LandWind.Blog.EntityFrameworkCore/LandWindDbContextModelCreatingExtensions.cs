@@ -18,8 +18,8 @@ namespace LandWind.Blog.EntityFrameworkCore
                 p.Property(x => x.Title).HasMaxLength(200).IsRequired();
                 p.Property(x => x.Author).HasMaxLength(10);
                 p.Property(x => x.Url).HasMaxLength(100).IsRequired();
-                p.Property(x => x.Html).HasColumnType("longtext").IsRequired();
-                p.Property(x => x.Markdown).HasColumnType("longtext").IsRequired();
+                p.Property(x => x.Html).IsRequired();
+                p.Property(x => x.Markdown).IsRequired();
                 p.Property(x => x.CategoryId).HasColumnType("int");
                 p.Property(x => x.CreationTime).HasColumnType("datetime");
             });
