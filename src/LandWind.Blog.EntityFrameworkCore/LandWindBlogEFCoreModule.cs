@@ -15,8 +15,7 @@ namespace LandWind.Blog.EntityFrameworkCore
         typeof(AbpEntityFrameworkCoreSqlServerModule),
         typeof(AbpEntityFrameworkCoreMySQLModule),
         typeof(AbpEntityFrameworkCoreSqliteModule),
-        typeof(AbpEntityFrameworkCorePostgreSqlModule),
-        typeof(LandWindBlogDbContext)
+        typeof(AbpEntityFrameworkCorePostgreSqlModule)
         )]
     public class LandWindBlogEFCoreModule : AbpModule
     {

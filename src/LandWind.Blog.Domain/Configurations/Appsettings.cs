@@ -26,5 +26,27 @@ namespace LandWind.Blog.Domain.Configurations
         public static string EnableDb => _config["ConnectionStrings:Enable"];
 
         public static string ConnectionStrings => _config.GetConnectionString(EnableDb);
+
+        public static string ApiVersion => _config["App:ApiVersion"];
+
+        public static class Github
+        {
+            public static int UserId => Convert.ToInt32(_config["Github:UserId"]);
+            public static string ClientId => _config["Github:ClientId"];
+            public static string ClientSecret => _config["Github:ClientSecret"];
+            public static string RedirectUri => _config["Github:RedirectUri"];
+            public static string ApplicationName => _config["Github:ApplicationName"];
+        }
+
+        public static class JWT
+        {
+            public static string Domain => _config["JWT:Domain"];
+
+            public static string SecurityKey => _config["JWT:SecurityKey"];
+
+            public static int Expires => Convert.ToInt32(_config["JWT:Expires"]);
+        }
+
     }
+
 }

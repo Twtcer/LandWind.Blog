@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LandWind.Blog.Application;
+﻿using LandWind.Blog.Application;
+using LandWind.Blog.Domain.Shared;
 using Microsoft.AspNetCore.Mvc;
-using Volo.Abp.AspNetCore.Mvc;
 
 namespace LandWind.Blog.HttpApi.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class HelloWorldController: AbpController
+    /// <summary>
+    /// HelloWorld 测试接口
+    /// </summary>
+    [ApiExplorerSettings(GroupName = Grouping.GroupName_v3)]
+    public class HelloWorldController : BaseController
     {
         private readonly IHelloWorldService _helloWorldService;
         public HelloWorldController(IHelloWorldService helloWorldService)
@@ -23,6 +20,6 @@ namespace LandWind.Blog.HttpApi.Controllers
         public string HelloWorld()
         {
             return _helloWorldService.HelloWorld();
-        } 
+        }
     }
 }

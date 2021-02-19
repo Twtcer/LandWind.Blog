@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace LandWind.Blog.EntityFrameworkCore.DbMigrations
 {
@@ -16,9 +11,10 @@ namespace LandWind.Blog.EntityFrameworkCore.DbMigrations
         public LandWindBlogMigrationsDbContext CreateDbContext(string[] args)
         {
            var config = BuildConfiguration();
+            //var connStr = config.GetConnectionString("SqlServer");
+            //Console.WriteLine($"connect str : {connStr}");
             var builder = new DbContextOptionsBuilder<LandWindBlogMigrationsDbContext>()
-                   //.UseSqlServer(config.GetConnectionString("DefaultConnection"));
-                   .UseSqlServer("Data Source=192.168.123.188,4133;User Id=sa;Password=sa123SA!@#;Initial Catalog=LandWindBlogDb;Pooling=true;Min Pool Size=1");
+                   .UseSqlServer(config.GetConnectionString("SqlServer"));
              
             return new LandWindBlogMigrationsDbContext(builder.Options);
         }
@@ -28,6 +24,8 @@ namespace LandWind.Blog.EntityFrameworkCore.DbMigrations
             var builder = new ConfigurationBuilder()
              .SetBasePath(Directory.GetCurrentDirectory())
              .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            //Tips:此处读取目录为运行项目根目录
+            Console.WriteLine($"dir path : {Directory.GetCurrentDirectory()}");
 
             return builder.Build();
         } 
