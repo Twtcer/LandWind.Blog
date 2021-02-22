@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandWind.Blog.Common", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandWind.Blog.HttpApi.Hosting", "src\LandWind.Blog.HttpApi.Hosting\LandWind.Blog.HttpApi.Hosting.csproj", "{5A9B7634-F8A0-4088-830D-5F7523DC9AD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandWind.Blog.Core", "LandWind.Blog.Core\LandWind.Blog.Core.csproj", "{E188C8CB-9F38-442B-95D7-A04E443C6A75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{5A9B7634-F8A0-4088-830D-5F7523DC9AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A9B7634-F8A0-4088-830D-5F7523DC9AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A9B7634-F8A0-4088-830D-5F7523DC9AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E188C8CB-9F38-442B-95D7-A04E443C6A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E188C8CB-9F38-442B-95D7-A04E443C6A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E188C8CB-9F38-442B-95D7-A04E443C6A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E188C8CB-9F38-442B-95D7-A04E443C6A75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -142,6 +148,7 @@ Global
 		{FBE5C113-574F-4158-A8D8-A3E4634920CD} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{A9829293-A032-40B5-AF02-7BCE0EECACC4} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{5A9B7634-F8A0-4088-830D-5F7523DC9AD4} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{E188C8CB-9F38-442B-95D7-A04E443C6A75} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

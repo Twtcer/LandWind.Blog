@@ -8,6 +8,7 @@ using LandWind.Blog.Application.Blog;
 using LandWind.Blog.Application.Contracts.Blog;
 using LandWind.Blog.Domain.Shared;
 using LandWind.Blog.Domain.Shared.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LandWind.Blog.HttpApi.Controllers
@@ -30,6 +31,7 @@ namespace LandWind.Blog.HttpApi.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize]
         public async Task<ResponseResult<string>> InsertPostAsync([FromBody] PostDto dto)
         {
             return await _blogService.InsertPostAsync(dto);
@@ -41,6 +43,7 @@ namespace LandWind.Blog.HttpApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
+        [Authorize]
         public async Task<ResponseResult> DeletePostAsync([Required] int id)
         {
             return await _blogService.DeletePostAsync(id);
@@ -53,6 +56,7 @@ namespace LandWind.Blog.HttpApi.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPut]
+        [Authorize]
         public async Task<ResponseResult<string>> UpdatePostAsync([Required] int id, [FromBody] PostDto dto)
         {
             return await _blogService.UpdatePostAsync(id, dto);

@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Linq;
 using LandWind.Blog.Domain.Configurations;
 using LandWind.Blog.EntityFrameworkCore;
+using LandWind.Blog.HttpApi.Hosting.Filters;
+using LandWind.Blog.HttpApi.Hosting.Middleware;
 using LandWind.Blog.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.AspNetCore.Mvc.ExceptionHandling;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 
@@ -49,6 +54,18 @@ namespace LandWind.Blog.HttpApi.Hosting
 
             //http请求
             context.Services.AddHttpClient();
+
+            //配置
+            Configure<MvcOptions>(options =>
+            {
+                var filterMetadata = options.Filters.FirstOrDefault(x => x is ServiceFilterAttribute attribute && attribute.ServiceType.Equals(typeof(AbpExceptionFilter)));
+
+                // 移除 AbpExceptionFilter
+                options.Filters.Remove(filterMetadata);
+
+                //添加自定义异常filter
+                options.Filters.Add(typeof(LandWindBlogExceptionFilter));
+            });
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -68,6 +85,9 @@ namespace LandWind.Blog.HttpApi.Hosting
             {
                 e.MapControllers();
             });
+
+            //异常中间件
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             //身份认证
             app.UseAuthentication();

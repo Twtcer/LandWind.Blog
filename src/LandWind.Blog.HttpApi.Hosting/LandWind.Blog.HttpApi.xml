@@ -56,6 +56,13 @@
             <param name="code"></param>
             <returns></returns>
         </member>
+        <member name="M:LandWind.Blog.HttpApi.Controllers.GithubAuthController.GenerateTokenAsync(System.String)">
+            <summary>
+            登录成功，生成token
+            </summary>
+            <param name="access_token"></param>
+            <returns></returns>
+        </member>
         <member name="T:LandWind.Blog.HttpApi.Controllers.HelloWorldController">
             <summary>
             HelloWorld 测试接口

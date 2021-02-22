@@ -14,6 +14,7 @@ namespace LandWind.Blog.HttpApi.Hosting
                       {
                           builder.UseIISIntegration()
                                  .UseStartup<Startup>();
+
                       }).UseAutofac().Build().RunAsync();
         } 
     }

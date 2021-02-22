@@ -43,5 +43,18 @@ namespace LandWind.Blog.HttpApi.Controllers
         {
             return await _authorizeService.GetAccessTokenAsync(code);
         }
+
+        /// <summary>
+        /// 登录成功，生成token
+        /// </summary>
+        /// <param name="access_token"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("token")]
+        public async Task<ResponseResult<string>> GenerateTokenAsync(string access_token)
+        {
+            return await _authorizeService.GenerateTokenAsync(access_token);
+        }
+
     }
 }

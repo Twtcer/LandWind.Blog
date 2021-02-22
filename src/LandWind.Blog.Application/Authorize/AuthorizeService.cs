@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using LandWind.Blog.Common.Github;
+using LandWind.Blog.Core.Extensions;
 using LandWind.Blog.Domain.Configurations;
 using LandWind.Blog.Domain.Shared.Base;
+using Microsoft.IdentityModel.Tokens;
 
 namespace LandWind.Blog.Application.Authorize
 {
-    public class AuthorizeService : IAuthorizeService
+    public class AuthorizeService : LandWIndBlogAppServiceBase, IAuthorizeService
     {
         private readonly IHttpClientFactory _httpClientFactory;
         public AuthorizeService(IHttpClientFactory httpClientFactory)
@@ -64,9 +68,61 @@ namespace LandWind.Blog.Application.Authorize
 
             return result;
         }
-        public Task<ResponseResult<string>> GenerateTokenAsync(string accessToken)
+        public async Task<ResponseResult<string>> GenerateTokenAsync(string accessToken)
         {
-            throw new NotImplementedException();
+            var result = new ResponseResult<string>();
+            if (string.IsNullOrEmpty(accessToken))
+            {
+                result.IsFailed("access_token 为空");
+                return result;
+            }
+
+            var url = $"{GithubConfig.ApiUserUrl}?access_token={accessToken}";
+            using var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.74");
+            var httpResponse = await client.GetAsync(url);
+            if (httpResponse.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                result.IsFailed("access_token不正确");
+                return result;
+            }
+
+            var content = await httpResponse.Content.ReadAsStringAsync();
+            var user = content.DeserializeToObject<UserResponse>();
+            if (user == null)
+            {
+                result.IsFailed("为获取到用户数据");
+                return result;
+            }
+
+            if (user.Id != GithubConfig.UserId)
+            {
+                result.IsFailed("当前账号未授权");
+                return result;
+            }
+
+            var claims = new[] {
+                new Claim(ClaimTypes.Name,user.Name),
+                new Claim(ClaimTypes.Email,user.Email),
+                new Claim(JwtRegisteredClaimNames.Exp,$"{new DateTimeOffset(DateTime.Now.AddMinutes(Appsettings.JWT.Expires)).ToUnixTimeSeconds()}"),
+                new Claim(JwtRegisteredClaimNames.Nbf,$"{new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()}")
+            };
+
+            var key = new SymmetricSecurityKey(Appsettings.JWT.SecurityKey.ToUtf8());
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var securityToken = new JwtSecurityToken(
+                issuer: Appsettings.JWT.Domain,
+                audience: Appsettings.JWT.Domain,
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(Appsettings.JWT.Expires),
+                signingCredentials: creds
+                );
+
+            var token = new JwtSecurityTokenHandler().WriteToken(securityToken);
+            result.IsSuccess(token);
+
+            return await Task.FromResult(result);
         }
 
     }

@@ -7,7 +7,7 @@ using LandWind.Blog.Domain.Shared.Base;
 
 namespace LandWind.Blog.Application.Blog.Impl
 {
-    public class BlogService :  IBlogService
+    public class BlogService : LandWIndBlogAppServiceBase, IBlogService
     {
         private readonly IPostRepository _postRepository;
         public BlogService(IPostRepository postRepository)
@@ -23,8 +23,8 @@ namespace LandWind.Blog.Application.Blog.Impl
 
         public async Task<ResponseResult<PostDto>> GetPostAsync(int id)
         {
-            var result = new ResponseResult<PostDto>(); 
-        
+            var result = new ResponseResult<PostDto>();
+
             var post = await _postRepository.GetAsync(id);
             if (post == null)
             {
@@ -32,11 +32,12 @@ namespace LandWind.Blog.Application.Blog.Impl
                 return result;
             }
 
-             var dto =   new PostDto { 
-                Title  = post.Title,
+            var dto = new PostDto
+            {
+                Title = post.Title,
                 Author = post.Author,
                 CategoryId = post.CategoryId,
-                CreationTime= post.CreationTime,
+                CreationTime = post.CreationTime,
                 Html = post.Html,
                 Markdown = post.Markdown,
                 Url = post.Url
@@ -79,7 +80,7 @@ namespace LandWind.Blog.Application.Blog.Impl
             var result = new ResponseResult<string>();
 
             var post = await _postRepository.GetAsync(id);
-            if(post==null)
+            if (post == null)
             {
                 result.IsFailed("文章不存在！");
             }
