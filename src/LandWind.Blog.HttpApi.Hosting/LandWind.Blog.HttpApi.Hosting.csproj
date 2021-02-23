@@ -19,6 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup> 
+    <ProjectReference Include="..\LandWind.Blog.BackgroundJobs\LandWind.Blog.BackgroundJobs.csproj" /> 
     <ProjectReference Include="..\LandWind.Blog.EntityFrameworkCore.DbMigrations\LandWind.Blog.EntityFrameworkCore.DbMigrations.csproj" /> 
     <ProjectReference Include="..\LandWind.Blog.EntityFrameworkCore\LandWind.Blog.EntityFrameworkCore.csproj" /> 
     <ProjectReference Include="..\LandWind.Blog.HttpApi\LandWind.Blog.HttpApi.csproj" /> 

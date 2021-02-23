@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using LandWind.Blog.BackgroundJobs;
+using LandWind.Blog.BackgroundJobs.Jobs;
 using LandWind.Blog.Domain.Configurations;
 using LandWind.Blog.EntityFrameworkCore;
 using LandWind.Blog.HttpApi.Hosting.Filters;
@@ -24,7 +26,8 @@ namespace LandWind.Blog.HttpApi.Hosting
         typeof(AbpAspNetCoreMvcModule),
         typeof(LandWindBlogHttpApiModule),
         typeof(LandWindBlogSwaggerModule),
-        typeof(LandWindBlogEFCoreModule)
+        typeof(LandWindBlogEFCoreModule),
+        typeof(LandWindBlogBackgroundJobsModule)
         )]
     public class LandWindBlogHttpApiHostingModule : AbpModule
     {
@@ -66,6 +69,9 @@ namespace LandWind.Blog.HttpApi.Hosting
                 //添加自定义异常filter
                 options.Filters.Add(typeof(LandWindBlogExceptionFilter));
             });
+
+            //定时任务
+            context.Services.AddTransient<IHostedService, HelloWorldJob>();
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)

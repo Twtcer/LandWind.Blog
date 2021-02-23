@@ -30,7 +30,7 @@ namespace LandWind.Blog.Core.Caching
                 cacheItem = await factory.Invoke();
 
                 var options = new DistributedCacheEntryOptions();
-                if (minutes != CacheStrategy.NEVER)
+                if (minutes != CacheStrategy.Never)
                 {
                     options.AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(minutes);
                 }
