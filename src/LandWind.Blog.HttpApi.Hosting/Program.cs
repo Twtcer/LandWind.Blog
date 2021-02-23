@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting; 
+using Microsoft.Extensions.Hosting;
+using LandWind.Blog.Core.Extensions;
 
 namespace LandWind.Blog.HttpApi.Hosting
 {
@@ -12,10 +13,15 @@ namespace LandWind.Blog.HttpApi.Hosting
             await Host.CreateDefaultBuilder(args)
                       .ConfigureWebHostDefaults(builder =>
                       {
-                          builder.UseIISIntegration()
+                          builder
+                          .UseIISIntegration()
                                  .UseStartup<Startup>();
 
-                      }).UseAutofac().Build().RunAsync();
-        } 
+                      })
+                      .UseLog4Net()
+                      .UseAutofac()
+                      .Build()
+                      .RunAsync();
+        }
     }
 }

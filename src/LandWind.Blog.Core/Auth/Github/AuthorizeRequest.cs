@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using LandWind.Blog.Domain.Configurations;
 
-namespace LandWind.Blog.Common.Github
+namespace LandWind.Blog.Core.Auth.Github
 {
     public  class AuthorizeRequest
     {

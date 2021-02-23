@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LandWind.Blog.Domain.Configurations;
 
-namespace LandWind.Blog.Common.Github
+namespace LandWind.Blog.Core.Auth.Github
 {
    public class AccessTokenRequest
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LandWind.Blog.Common.Github
+namespace LandWind.Blog.Core.Auth.Github
 {
     public class UserResponse
     {
