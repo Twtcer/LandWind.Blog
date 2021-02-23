@@ -1,4 +1,5 @@
-﻿using LandWind.Blog.Application;
+﻿using System;
+using LandWind.Blog.Application;
 using LandWind.Blog.Domain.Shared;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,13 @@ namespace LandWind.Blog.HttpApi.Controllers
         public string HelloWorld()
         {
             return _helloWorldService.HelloWorld();
+        }
+
+        [HttpGet]
+        [Route("exception")]
+        public string Exception()
+        {
+            throw new NotImplementedException("未实现异常接口");
         }
     }
 }
