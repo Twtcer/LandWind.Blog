@@ -52,6 +52,12 @@ namespace LandWind.Blog.Domain.Configurations
             public static string RedisConnectionString => _config["Caching:RedisConnectionString"];
         }
 
+        public static class Hangfire
+        {
+            public static string Login => _config["Hangfire:Login"];
+            public static string Password => _config["Hangfire:Password"]; 
+        }
+
     }
 
 }

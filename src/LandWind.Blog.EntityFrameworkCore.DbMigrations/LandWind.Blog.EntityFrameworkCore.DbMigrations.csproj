@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LandWind.Blog.Domain\LandWind.Blog.Domain.csproj" />
     <ProjectReference Include="..\LandWind.Blog.EntityFrameworkCore\LandWind.Blog.EntityFrameworkCore.csproj" />
   </ItemGroup>
 

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Hangfire;
-using Hangfire.MySql.Core;
+﻿using Hangfire;
+using Hangfire.Dashboard.BasicAuthorization;
+using Hangfire.MySql;
 using LandWind.Blog.Domain.Configurations;
 using Volo.Abp;
 using Volo.Abp.BackgroundJobs.Hangfire;
@@ -12,7 +8,9 @@ using Volo.Abp.Modularity;
 
 namespace LandWind.Blog.BackgroundJobs
 {
-    [DependsOn(typeof(AbpBackgroundJobsHangfireModule))]
+    [DependsOn(
+        typeof(AbpBackgroundJobsHangfireModule)
+        )]
     public class LandWindBlogBackgroundJobsModule:AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
@@ -21,8 +19,8 @@ namespace LandWind.Blog.BackgroundJobs
             {
                 options.UseStorage(
                     new MySqlStorage(Appsettings.ConnectionStrings, 
-                    new MySqlStorageOptions { 
-                        TablePrefix = Domain.Shared.LandWindBlogConsts.DbTablePrefix+ "hangfire"
+                    new MySqlStorageOptions {
+                        TablesPrefix = Domain.Shared.LandWindBlogConsts.DbTablePrefix+ "hangfire"
                     }));
             });
         }
@@ -32,7 +30,29 @@ namespace LandWind.Blog.BackgroundJobs
             var app = context.GetApplicationBuilder();
 
             app.UseHangfireServer();
-            app.UseHangfireDashboard();
+            //启用Hangfire基本授权验证
+            app.UseHangfireDashboard(options: new DashboardOptions
+            {
+                Authorization = new[] {
+                    new BasicAuthAuthorizationFilter(new BasicAuthAuthorizationFilterOptions{
+                        RequireSsl = false,
+                        SslRedirect  = false,
+                        LoginCaseSensitive = true,
+                        Users = new []
+                        {
+                            new BasicAuthAuthorizationUser{
+                                Login = Appsettings.Hangfire.Login,
+                                PasswordClear = Appsettings.Hangfire.Password
+                            }
+                        }
+                    })
+                },
+                DashboardTitle="任务调度管理"
+            }) ;
+
+            var service = context.ServiceProvider;
+            service.UseHangfireTest();
+
         }
     }
 }
