@@ -28,6 +28,7 @@ namespace LandWind.Blog.EntityFrameworkCore
 
             Configure<AbpDbContextOptions>(options =>
             {
+                var connectStr = Appsettings.ConnectionStrings; 
                 switch (Appsettings.EnableDb)
                 {
                     case "MySql":

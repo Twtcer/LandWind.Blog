@@ -1,9 +1,8 @@
 ﻿using System;
-using System.IO;
 using LandWind.Blog.Domain.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace LandWind.Blog.EntityFrameworkCore.DbMigrations
 {
@@ -12,8 +11,26 @@ namespace LandWind.Blog.EntityFrameworkCore.DbMigrations
         public LandWindBlogMigrationsDbContext CreateDbContext(string[] args)
         {
             //var config = BuildConfiguration();  
-            var builder = new DbContextOptionsBuilder<LandWindBlogMigrationsDbContext>()
-                   .UseSqlServer(Appsettings.ConnectionStrings);
+            var builder = new DbContextOptionsBuilder<LandWindBlogMigrationsDbContext>();
+            var connectStr = Appsettings.ConnectionStrings;
+              switch (Appsettings.EnableDb)
+            {
+                case "MySql":
+                    builder.UseMySql(connectStr, ServerVersion.FromString("10.4.12-MariaDB"));
+                    break;
+                case "SqlServer":
+                    builder.UseSqlServer(connectStr);
+                    break;
+                case "Sqlite":
+                    builder.UseSqlite(connectStr);
+                    break;
+                case "PostgreSql":
+                    builder.UseNpgsql(connectStr);
+                    break;
+                default:
+                    builder.UseSqlServer(connectStr);
+                    break;
+            } 
              
             return new LandWindBlogMigrationsDbContext(builder.Options);
         }

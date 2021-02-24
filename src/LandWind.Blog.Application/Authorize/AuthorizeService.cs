@@ -14,7 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace LandWind.Blog.Application.Authorize
 {
-    public class AuthorizeService : LandWIndBlogAppServiceBase, IAuthorizeService
+    public class AuthorizeService : LandWindBlogAppServiceBase, IAuthorizeService
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IAuthorizeCacheService _authorizeCacheService;
@@ -99,6 +99,7 @@ namespace LandWind.Blog.Application.Authorize
                 var url = $"{GithubConfig.ApiUserUrl}?access_token={accessToken}";
                 using var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.74");
+                client.DefaultRequestHeaders.Add("Authorization",$"token {accessToken}");
                 var httpResponse = await client.GetAsync(url);
                 if (httpResponse.StatusCode != System.Net.HttpStatusCode.OK)
                 {

@@ -5,9 +5,9 @@ using LandWind.Blog.Domain.Entities;
 using LandWind.Blog.Domain.Repositories;
 using LandWind.Blog.Domain.Shared.Base;
 
-namespace LandWind.Blog.Application.Blog.Impl
+namespace LandWind.Blog.Application.Blog
 {
-    public class BlogService : LandWIndBlogAppServiceBase, IBlogService
+    public class BlogService : LandWindBlogAppServiceBase, IBlogService
     {
         private readonly IPostRepository _postRepository;
         public BlogService(IPostRepository postRepository)
@@ -30,18 +30,8 @@ namespace LandWind.Blog.Application.Blog.Impl
             {
                 result.IsFailed("文章不存在！");
                 return result;
-            }
-
-            var dto = new PostDto
-            {
-                Title = post.Title,
-                Author = post.Author,
-                CategoryId = post.CategoryId,
-                CreationTime = post.CreationTime,
-                Html = post.Html,
-                Markdown = post.Markdown,
-                Url = post.Url
-            };
+            } 
+            var dto = ObjectMapper.Map<Post, PostDto>(post);
 
             result.IsSuccessed(dto);
             return result;
@@ -53,17 +43,7 @@ namespace LandWind.Blog.Application.Blog.Impl
 
             try
             {
-                var entity = new Post
-                {
-                    Title = dto.Title,
-                    Author = dto.Author,
-                    Url = dto.Url,
-                    Html = dto.Html,
-                    Markdown = dto.Markdown,
-                    CategoryId = dto.CategoryId,
-                    CreationTime = dto.CreationTime
-                };
-
+                var entity = ObjectMapper.Map<PostDto, Post>(dto);
                 var post = await _postRepository.InsertAsync(entity);
                 result.IsSuccess("添加成功！");
             }

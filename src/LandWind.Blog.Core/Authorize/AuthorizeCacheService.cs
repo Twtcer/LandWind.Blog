@@ -17,12 +17,12 @@ namespace LandWind.Blog.Core.Authorize
 
         public async Task<ResponseResult<string>> GenerateTokenAsync(string access_token, Func<Task<ResponseResult<string>>> factory)
         {
-            return await Cache.GetOrAddAsync(string.Format(GetLoginAddressKey, access_token), factory, CacheStrategy.OneHours);
+            return await Cache.GetOrAddAsync(string.Format(GenerateTokenKey, access_token), factory, CacheStrategy.OneHours);
         }
 
         public async Task<ResponseResult<string>> GetAccessTokenAsync(string code, Func<Task<ResponseResult<string>>> factory)
         {
-            return await Cache.GetOrAddAsync(string.Format(GetAccessTokenKey, code), factory, CacheStrategy.FiveMinute);
+            return await Cache.GetOrAddAsync(string.Format(GetAccessTokenKey, code), factory, CacheStrategy.OneMinute);
         }
 
         public async Task<ResponseResult<string>> GetLoginAddressAsync(Func<Task<ResponseResult<string>>> factory)

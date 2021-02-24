@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LandWind.Blog.Application.HelloWorld
 {
-    public class HelloWorldService: LandWIndBlogAppServiceBase, IHelloWorldService
+    public class HelloWorldService: LandWindBlogAppServiceBase, IHelloWorldService
     {
         public string HelloWorld()
         {

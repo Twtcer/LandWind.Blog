@@ -84,23 +84,19 @@ namespace LandWind.Blog.HttpApi.Hosting
                 //启用生成异常页面
                 app.UseDeveloperExceptionPage();
             }
-
+            //身份认证
+            app.UseAuthentication();
             //路由
             app.UseRouting();
+            //授权
+            app.UseAuthorization();
             app.UseEndpoints(e =>
             {
                 e.MapControllers();
             });
 
             //异常中间件
-            app.UseMiddleware<ExceptionHandlerMiddleware>();
-
-            //身份认证
-            app.UseAuthentication();
-
-            //授权
-            app.UseAuthorization();
-
+            app.UseMiddleware<ExceptionHandlerMiddleware>(); 
         }
     }
 }
