@@ -14,7 +14,7 @@ namespace LandWind.Blog.BackgroundJobs.Jobs
         public HelloWorldJob()
         {
             _log = LogManager.GetLogger(typeof(HelloWorldJob));
-        }
+        } 
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {

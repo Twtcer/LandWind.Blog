@@ -5,11 +5,11 @@ using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace LandWind.Blog.EntityFrameworkCore
-{ 
+{
     public class LandWindBlogDbContext : AbpDbContext<LandWindBlogDbContext>
     {
-        public LandWindBlogDbContext(DbContextOptions<LandWindBlogDbContext> options):base(options)
-        {  
+        public LandWindBlogDbContext(DbContextOptions<LandWindBlogDbContext> options) : base(options)
+        {
         }
 
         public DbSet<Post> Posts { get; set; }
@@ -17,11 +17,12 @@ namespace LandWind.Blog.EntityFrameworkCore
         public DbSet<Category> Categories { get; set; }
         public DbSet<PostTag> PostTags { get; set; }
         public DbSet<FriendLink> FriendLinks { get; set; }
+        public DbSet<HotNews> HotNews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-             
+
             modelBuilder.Configue();
         }
     }

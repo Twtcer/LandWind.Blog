@@ -16,7 +16,7 @@ namespace LandWind.Blog.EntityFrameworkCore.Repositories
         public async Task BulkInsertAsync(IEnumerable<FriendLink> ts)
         {
             var context = await GetDbContextAsync();
-            await context.Set<FriendLink>().AddRangeAsync();
+            await context.Set<FriendLink>().AddRangeAsync(ts);
             await context.SaveChangesAsync();
         }
     }
