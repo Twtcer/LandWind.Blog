@@ -258,3 +258,4 @@ src/LandWind.Blog.IdentityServer/Logs/*
 src/LandWind.Blog.HttpApi.Host/Logs/*
 src/LandWind.Blog.HttpApi.HostWithIds/Logs/*
 src/LandWind.Blog.DbMigrator/Logs/*
+/src/LandWind.Blog.HttpApi.Hosting/.local-chromium
