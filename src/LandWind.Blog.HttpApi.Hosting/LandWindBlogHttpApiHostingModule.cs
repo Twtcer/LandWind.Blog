@@ -70,8 +70,8 @@ namespace LandWind.Blog.HttpApi.Hosting
                 options.Filters.Add(typeof(LandWindBlogExceptionFilter));
             });
 
-            //定时任务
-            context.Services.AddTransient<IHostedService, HelloWorldJob>();
+            ////定时任务
+            //context.Services.AddTransient<IHostedService, HelloWorldJob>();
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)

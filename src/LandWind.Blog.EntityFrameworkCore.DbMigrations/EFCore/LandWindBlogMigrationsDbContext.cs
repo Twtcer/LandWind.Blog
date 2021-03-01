@@ -27,5 +27,10 @@ namespace LandWind.Blog.EntityFrameworkCore.DbMigrations
 
             modelBuilder.Configue();
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }

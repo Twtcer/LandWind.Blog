@@ -39,5 +39,15 @@
             创建时间
             </summary>
         </member>
+        <member name="P:LandWind.Blog.Application.Contracts.Jobs.HotNewsJobItem`1.Result">
+            <summary>
+            <see cref="P:LandWind.Blog.Application.Contracts.Jobs.HotNewsJobItem`1.Result"/>
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Application.Contracts.Jobs.HotNewsJobItem`1.Source">
+            <summary>
+            来源
+            </summary>
+        </member>
     </members>
 </doc>

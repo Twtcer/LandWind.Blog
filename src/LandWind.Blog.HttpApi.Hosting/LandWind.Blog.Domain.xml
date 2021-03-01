@@ -74,6 +74,11 @@
             链接
             </summary>
         </member>
+        <member name="T:LandWind.Blog.Domain.Entities.HotNews">
+            <summary>
+            热点新闻
+            </summary>
+        </member>
         <member name="T:LandWind.Blog.Domain.Entities.Post">
             <summary>
             post 文章

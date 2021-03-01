@@ -10,7 +10,7 @@ using Volo.Abp.EntityFrameworkCore;
 namespace LandWind.Blog.EntityFrameworkCore.DbMigrations.Migrations
 {
     [DbContext(typeof(LandWindBlogMigrationsDbContext))]
-    [Migration("20210224090724_Initial")]
+    [Migration("20210301060843_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
