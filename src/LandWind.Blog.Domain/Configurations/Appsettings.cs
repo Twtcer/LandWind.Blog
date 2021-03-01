@@ -55,9 +55,67 @@ namespace LandWind.Blog.Domain.Configurations
         public static class Hangfire
         {
             public static string Login => _config["Hangfire:Login"];
-            public static string Password => _config["Hangfire:Password"]; 
+            public static string Password => _config["Hangfire:Password"];
         }
 
-    }
+        public static class Email
+        {
+            /// <summary>
+            /// Host Address
+            /// </summary>
+            public static string Host { get; set; } = _config["Email:Host"];
 
+            /// <summary>
+            /// Port
+            /// </summary>
+            public static int Port { get; set; } = Convert.ToInt32(_config["Email:Port"]);
+
+            /// <summary>
+            /// UseSsl
+            /// </summary>
+            public static bool UseSsl { get; set; } = Convert.ToBoolean(_config["Email:UseSsl"]);
+
+            /// <summary>
+            /// Form
+            /// </summary>
+            public static class From
+            { 
+                /// <summary>
+                /// Username
+                /// </summary>
+                public static string Username => _config["Email:From:Username"];
+
+                /// <summary>
+                /// Password
+                /// </summary>
+                public static string Password => _config["Email:From:Password"];
+
+                /// <summary>
+                /// Name
+                /// </summary>
+                public static string Name => _config["Email:From:Name"]; 
+            }
+
+            /// <summary>
+            /// To
+            /// </summary>
+            public static IDictionary<string, string> To
+            {
+                get
+                {
+                    var dic = new Dictionary<string, string>();
+
+                    var emails = _config.GetSection("Email:To");
+                    foreach (IConfigurationSection section in emails.GetChildren())
+                    {
+                        var name = section["Name"];
+                        var address = section["Address"];
+
+                        dic.Add(name, address);
+                    }
+                    return dic;
+                }
+            }
+        }
+    }
 }
