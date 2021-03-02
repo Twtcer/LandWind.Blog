@@ -1,7 +1,5 @@
-﻿using LandWind.Blog.Domain.Configurations;
-using LandWind.Blog.Domain.Entities;
+﻿using LandWind.Blog.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace LandWind.Blog.EntityFrameworkCore
@@ -24,6 +22,11 @@ namespace LandWind.Blog.EntityFrameworkCore
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Configue();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

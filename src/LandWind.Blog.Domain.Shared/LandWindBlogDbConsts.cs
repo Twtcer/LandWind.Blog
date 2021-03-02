@@ -15,5 +15,7 @@ namespace LandWind.Blog.Domain.Shared
         public const string PostTags = "Post_Tags";
 
         public const string Friendlinks = "Friendlinks";
+
+        public const string HotNews = "HotNews";
     }
 }

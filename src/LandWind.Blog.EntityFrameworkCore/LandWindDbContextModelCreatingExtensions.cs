@@ -54,6 +54,15 @@ namespace LandWind.Blog.EntityFrameworkCore
                 b.Property(x => x.Title).HasMaxLength(20).IsRequired();
                 b.Property(x => x.LinkUrl).HasMaxLength(100).IsRequired();
             });
+
+            builder.Entity<HotNews>(a =>
+            {
+                a.ToTable(LandWindBlogConsts.DbTablePrefix + DbTableName.HotNews);
+                a.HasKey(a => a.Id);
+                a.Property(x => x.Title).HasMaxLength(200).IsRequired(); 
+                a.Property(x => x.Url).HasMaxLength(100).IsRequired();
+                a.Property(x => x.CreationTime).HasColumnType("datetime");
+            });
         }
     }
 }

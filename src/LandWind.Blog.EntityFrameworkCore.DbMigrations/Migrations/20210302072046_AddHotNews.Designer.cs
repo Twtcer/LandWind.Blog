@@ -3,15 +3,17 @@ using System;
 using LandWind.Blog.EntityFrameworkCore.DbMigrations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace LandWind.Blog.EntityFrameworkCore.DbMigrations.Migrations
 {
     [DbContext(typeof(LandWindBlogMigrationsDbContext))]
-    partial class LandWindBlogMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210302072046_AddHotNews")]
+    partial class AddHotNews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
