@@ -51,7 +51,7 @@ namespace LandWind.Blog.BackgroundJobs
             }) ;
 
             var service = context.ServiceProvider;
-            service.UseHangfireTest();
+            service.AddHangfireJobs();
 
         }
     }

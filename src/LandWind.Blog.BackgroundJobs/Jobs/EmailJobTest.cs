@@ -15,7 +15,7 @@ namespace LandWind.Blog.BackgroundJobs.Jobs
             // 发送Email
             var message = new MimeMessage
             {
-                Subject = "【定时任务】壁纸数据抓取任务推送",
+                Subject = "【定时任务】数据抓取任务推送",
                 Body = new BodyBuilder
                 {
                     HtmlBody = $"本次抓取到{10}条数据，时间:{DateTime.Now:yyyy-MM-dd HH:mm:ss}"

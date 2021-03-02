@@ -1,20 +1,20 @@
 ﻿using System;
 using Hangfire;
-using LandWind.Blog.BackgroundJobs.Jobs;
-using LandWind.Blog.BackgroundJobs.Jobs.Hangfire;
+using LandWind.Blog.BackgroundJobs.Jobs; 
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LandWind.Blog.BackgroundJobs
 {
     public static class LandWindBlogBackgroundJobsExtensions
     {
-        public static void UseHangfireTest(this IServiceProvider service)
-        {
-            //var job1 = service.GetService<HangfireTestJob>(); 
-            //RecurringJob.AddOrUpdate("定时任务测试", () => job1.ExecuteAsync(), CronType.Minute());
-
+        public static void AddHangfireJobs(this IServiceProvider service)
+        { 
             var job2 = service.GetService<PuppeteerTestJob>();
             RecurringJob.AddOrUpdate("PuppeteerTestJob测试", () => job2.ExecuteAsync(), CronType.Day());
+
+            var job3 = service.GetService<HotNewsJob>();
+            RecurringJob.AddOrUpdate("热点新闻抓取", () => job3.ExecuteAsync(), CronType.Hour(30));
+            
         }
     }
 }
