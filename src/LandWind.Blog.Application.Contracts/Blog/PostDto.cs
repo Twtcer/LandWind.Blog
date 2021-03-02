@@ -41,4 +41,21 @@ namespace LandWind.Blog.Application.Contracts.Blog
         /// </summary>
         public DateTime CreationTime { get; set; }
     }
+
+    public class QueryPostDto
+    {
+        public int Year { get; set; }
+        public IEnumerable<PostBriefDto> Posts { get; set; }
+    }
+
+    /// <summary>
+    /// 文章模型
+    /// </summary>
+    public class PostBriefDto
+    {
+        public string Title { get; set; }
+        public string Url { get; set; }
+        public int Year { get; set; }
+        public string CreationTime { get; set; }
+    }
 }

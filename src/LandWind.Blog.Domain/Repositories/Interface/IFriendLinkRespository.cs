@@ -3,7 +3,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace LandWind.Blog.Domain.Repositories
 {
-    public interface IFriendLinkRespository:IRepository<FriendLink,int>, IBulkInsert<FriendLink>
+    public interface IFriendLinkRepository : IRepository<FriendLink,int>, IBulkInsert<FriendLink>
     {
 
     }
