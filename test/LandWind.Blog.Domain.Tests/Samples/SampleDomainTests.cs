@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Shouldly;
-using Volo.Abp.Identity;
+using Shouldly; 
 using Xunit;
 
 namespace LandWind.Blog.Samples

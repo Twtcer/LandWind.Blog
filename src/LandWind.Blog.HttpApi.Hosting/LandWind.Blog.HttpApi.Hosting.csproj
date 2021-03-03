@@ -23,7 +23,6 @@
     <ProjectReference Include="..\LandWind.Blog.EntityFrameworkCore.DbMigrations\LandWind.Blog.EntityFrameworkCore.DbMigrations.csproj" /> 
     <ProjectReference Include="..\LandWind.Blog.EntityFrameworkCore\LandWind.Blog.EntityFrameworkCore.csproj" /> 
     <ProjectReference Include="..\LandWind.Blog.HttpApi\LandWind.Blog.HttpApi.csproj" /> 
-    <ProjectReference Include="..\LandWind.Blog.Swagger\LandWind.Blog.Swagger.csproj" /> 
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

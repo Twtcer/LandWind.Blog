@@ -11,7 +11,6 @@
     <PackageReference Include="Volo.Abp.TestBase" Version="4.2.0" />
     <PackageReference Include="Volo.Abp.Autofac" Version="4.2.0" />
     <PackageReference Include="Volo.Abp.Authorization" Version="4.2.0" />
-    <ProjectReference Include="..\..\src\LandWind.Blog.Domain\LandWind.Blog.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -19,9 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LandWind.Blog.Application.Contracts\LandWind.Blog.Application.Contracts.csproj" />
     <ProjectReference Include="..\LandWind.Blog.Core\LandWind.Blog.Core.csproj" />
-    <ProjectReference Include="..\LandWind.Blog.Domain\LandWind.Blog.Domain.csproj" />
   </ItemGroup>
 
 </Project>

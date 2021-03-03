@@ -1,4 +1,5 @@
-﻿using LandWind.Blog.Domain;
+﻿using LandWind.Blog.Core.Domain.Options;
+using LandWind.Blog.Domain;
 using LandWind.Blog.Domain.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
@@ -10,8 +11,7 @@ using Volo.Abp.Modularity;
 
 namespace LandWind.Blog.EntityFrameworkCore
 {
-    [DependsOn(
-        typeof(LandWindBlogDomainModule),
+    [DependsOn( 
         typeof(AbpEntityFrameworkCoreSqlServerModule),
         typeof(AbpEntityFrameworkCoreMySQLModule),
         typeof(AbpEntityFrameworkCoreSqliteModule),

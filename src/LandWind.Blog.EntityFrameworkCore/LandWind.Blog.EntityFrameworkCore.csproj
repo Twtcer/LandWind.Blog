@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LandWind.Blog.Domain\LandWind.Blog.Domain.csproj" />
+    <ProjectReference Include="..\LandWind.Blog.Core\LandWind.Blog.Core.csproj" />
   </ItemGroup>
 
 </Project>

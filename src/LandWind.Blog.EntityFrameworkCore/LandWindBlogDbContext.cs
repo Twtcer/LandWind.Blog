@@ -1,4 +1,4 @@
-﻿using LandWind.Blog.Domain.Entities;
+﻿using LandWind.Blog.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LandWind.Blog.Domain.Shared.Base;
+using LandWind.Blog.Core.Response.Base;
 
 namespace LandWind.Blog.Application.Authorize
 {

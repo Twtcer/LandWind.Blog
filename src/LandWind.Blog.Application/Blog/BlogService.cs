@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Threading.Tasks;
-using LandWind.Blog.Application.Contracts.Blog;
-using LandWind.Blog.Domain.Entities;
-using LandWind.Blog.Domain.Repositories;
-using LandWind.Blog.Domain.Shared.Base;
+using System.Threading.Tasks; 
+using LandWind.Blog.Core.Domain.Repositories; 
 
 namespace LandWind.Blog.Application.Blog
 {
     /// <summary>
     /// BlogService
     /// </summary>
-    public partial class BlogService : LandWindBlogAppServiceBase, IBlogService
+    public partial class BlogService : LandWindBlogAppServiceBase/*, IBlogService*/
     {
         //private readonly IPostRepository _postRepository;
         //public BlogService(IPostRepository postRepository)
@@ -104,8 +101,8 @@ namespace LandWind.Blog.Application.Blog
         }
     }
 
-    public partial class BlogPostService:IBlogPostService
-    {
+    //public class BlogPostService:IBlogPostService
+    //{
         
-    }
+    //}
 }

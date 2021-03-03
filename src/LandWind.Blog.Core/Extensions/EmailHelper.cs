@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using LandWind.Blog.Domain.Configurations;
+using LandWind.Blog.Core.Domain.Options;
 using MailKit.Net.Smtp;
 using MimeKit;
 

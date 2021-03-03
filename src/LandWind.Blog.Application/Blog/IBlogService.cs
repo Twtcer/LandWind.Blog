@@ -1,39 +1,69 @@
 ﻿using System.Threading.Tasks;
-using LandWind.Blog.Application.Contracts.Blog;
-using LandWind.Blog.Domain.Shared.Base;
+using LandWind.Blog.Core.Response.Base; 
+using LandWind.Blog.Core.Dto.Blog; 
 
 namespace LandWind.Blog.Application.Blog
 {
-    public partial interface IBlogService<DtoT> where DtoT : class
+    public interface IBlogService<DtoT, QueryDto> where DtoT : class where QueryDto:class
     {
-        Task<ResponseResult<string>> InsertPostAsync(DtoT dto);
-        Task<ResponseResult> DeletePostAsync(int id);
-        Task<ResponseResult<string>> UpdatePostAsync(int id, DtoT dto);
-        Task<ResponseResult<DtoT>> GetPostAsync(int id);
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <returns></returns>
+        Task<ResponseResult<PagedList<QueryDto>>> QueryAsync(PagingInput input);
+
+        /// <summary>
+        /// 获取单个模型
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<ResponseResult<DtoT>> GetAsync(int id);
+
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        Task<ResponseResult<string>> InsertAsync(DtoT dto);
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<ResponseResult> DeleteAsync(int id);
+
+        /// <summary>
+        /// 更新
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        Task<ResponseResult<string>> UpdateAsync(int id, DtoT dto);  
     }
 
-    public partial interface IBlogPostService
-    {
-        
-    }
-
-    public partial interface IBlogCategorytService
+    public interface IBlogPostService : IBlogService<PostDto, QueryPostDto>
     {
 
     }
 
-    public partial interface IBlogTagsService
-    {
+    //public partial interface IBlogCategorytService : IBlogService<CategoryDto, QueryCategoryDto>
+    //{
 
-    }
+    //}
 
-    public partial interface IBlogFriendLinkService
-    {
+    //public partial interface IBlogTagsService : IBlogService<TagDto, QueryTagDto>
+    //{
 
-    }
+    //}
 
-    public partial interface IBlogAdminService
-    {
+    //public partial interface IBlogFriendLinkService : IBlogService<FriendLinkDto, QueryFriendLinkDto>
+    //{
 
-    }
+    //}
+
+    //public partial interface IBlogAdminService : IBlogService<AdminDto, QueryAdminDto>
+    //{
+
+    //}
 }

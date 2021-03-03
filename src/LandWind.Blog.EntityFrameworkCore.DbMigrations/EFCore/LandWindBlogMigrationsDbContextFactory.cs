@@ -1,8 +1,6 @@
-﻿using System;
-using LandWind.Blog.Domain.Configurations;
+﻿using LandWind.Blog.Core.Domain.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace LandWind.Blog.EntityFrameworkCore.DbMigrations
 {

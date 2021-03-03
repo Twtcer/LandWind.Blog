@@ -1,15 +1,14 @@
-﻿using LandWind.Blog.Application;
-using LandWind.Blog.Core.Caching;
-using Volo.Abp.AutoMapper;
-using Volo.Abp.Identity;
+﻿using LandWind.Blog.Core;
+using Volo.Abp.Application;
+using Volo.Abp.AutoMapper; 
 using Volo.Abp.Modularity;
 
 namespace LandWind.Blog
 {
     [DependsOn(  
-        typeof(AbpIdentityApplicationModule),
+        typeof(AbpDddApplicationModule),
         typeof(AbpAutoMapperModule),
-        typeof(LandWindBlogApplicationCachingMoudle)
+        typeof(LandWindBlogCoreModule)
         )]
     public class LandWindBlogApplicationModule : AbpModule
     {

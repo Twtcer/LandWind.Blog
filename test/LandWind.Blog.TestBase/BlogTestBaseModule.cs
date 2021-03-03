@@ -1,5 +1,4 @@
-﻿using LandWind.Blog.Domain;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Authorization;
 using Volo.Abp.Autofac;
@@ -12,8 +11,8 @@ namespace LandWind.Blog
     [DependsOn(
         typeof(AbpAutofacModule),
         typeof(AbpTestBaseModule),
-        typeof(AbpAuthorizationModule),
-        typeof(LandWindBlogDomainModule)
+        typeof(AbpAuthorizationModule)
+        //typeof(LandWindBlogCoreModule)
         )]
     public class BlogTestBaseModule : AbpModule
     {

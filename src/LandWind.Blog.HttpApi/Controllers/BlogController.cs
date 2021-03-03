@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using LandWind.Blog.Application.Blog;
-using LandWind.Blog.Application.Contracts.Blog;
-using LandWind.Blog.Domain.Shared;
-using LandWind.Blog.Domain.Shared.Base;
+using LandWind.Blog.Core.Dto.Blog;
+using LandWind.Blog.Core.Response.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,10 +12,10 @@ namespace LandWind.Blog.HttpApi.Controllers
     /// 博客文章接口
     /// </summary>
     [ApiExplorerSettings(GroupName = Grouping.GroupName_v1)]
-    public class BlogController : BaseController
+    public class BlogPostController : BaseController
     {
-        private readonly IBlogService _blogService;
-        public BlogController(IBlogService blogService)
+        private readonly IBlogPostService _blogService;
+        public BlogPostController(IBlogPostService blogService)
         {
             _blogService = blogService;
         }
@@ -34,7 +29,7 @@ namespace LandWind.Blog.HttpApi.Controllers
         [Authorize]
         public async Task<ResponseResult<string>> InsertPostAsync([FromBody] PostDto dto)
         {
-            return await _blogService.InsertPostAsync(dto);
+            return await _blogService.InsertAsync(dto);
         }
 
         /// <summary>
@@ -46,7 +41,7 @@ namespace LandWind.Blog.HttpApi.Controllers
         [Authorize]
         public async Task<ResponseResult> DeletePostAsync([Required] int id)
         {
-            return await _blogService.DeletePostAsync(id);
+            return await _blogService.DeleteAsync(id);
         }
 
         /// <summary>
@@ -59,7 +54,7 @@ namespace LandWind.Blog.HttpApi.Controllers
         [Authorize]
         public async Task<ResponseResult<string>> UpdatePostAsync([Required] int id, [FromBody] PostDto dto)
         {
-            return await _blogService.UpdatePostAsync(id, dto);
+            return await _blogService.UpdateAsync(id, dto);
         }
 
         /// <summary>
@@ -70,7 +65,7 @@ namespace LandWind.Blog.HttpApi.Controllers
         [HttpGet]
         public async Task<ResponseResult<PostDto>> GetPostAsync([Required] int id)
         {
-            return await _blogService.GetPostAsync(id);
+            return await _blogService.GetAsync(id);
         }
     }
 }

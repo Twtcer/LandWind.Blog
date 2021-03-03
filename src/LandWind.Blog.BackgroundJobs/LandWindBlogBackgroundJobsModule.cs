@@ -1,7 +1,8 @@
 ﻿using Hangfire;
 using Hangfire.Dashboard.BasicAuthorization;
 using Hangfire.MySql;
-using LandWind.Blog.Domain.Configurations;
+using LandWind.Blog.Core.Const;
+using LandWind.Blog.Core.Domain.Options;
 using Volo.Abp;
 using Volo.Abp.BackgroundJobs.Hangfire;
 using Volo.Abp.Modularity;
@@ -20,7 +21,7 @@ namespace LandWind.Blog.BackgroundJobs
                 options.UseStorage(
                     new MySqlStorage(Appsettings.ConnectionStrings, 
                     new MySqlStorageOptions {
-                        TablesPrefix = Domain.Shared.LandWindBlogConsts.DbTablePrefix+ "hangfire"
+                        TablesPrefix = LandWindBlogDbConsts.DbTablePrefix+ "hangfire"
                     }));
             });
         }

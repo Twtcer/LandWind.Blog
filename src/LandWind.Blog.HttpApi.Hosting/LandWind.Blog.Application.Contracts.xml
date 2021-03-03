@@ -39,6 +39,11 @@
             创建时间
             </summary>
         </member>
+        <member name="T:LandWind.Blog.Application.Contracts.Blog.PostBriefDto">
+            <summary>
+            文章模型
+            </summary>
+        </member>
         <member name="P:LandWind.Blog.Application.Contracts.Jobs.HotNewsJobItem`1.Result">
             <summary>
             <see cref="P:LandWind.Blog.Application.Contracts.Jobs.HotNewsJobItem`1.Result"/>
