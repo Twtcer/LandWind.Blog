@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LandWind.Blog.Core.Const
+namespace LandWind.Blog.EntityFrameworkCore
 {
     public class LandWindBlogDbConsts
     {

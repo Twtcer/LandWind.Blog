@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LandWind.Blog.Application.Caching
 {
-    public static class LandWindBlogApplicationCachingConsts
+    public static class ApplicationCachingConsts
     {
         public class CachePrefix
         {

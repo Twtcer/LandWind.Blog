@@ -4,9 +4,9 @@ namespace LandWind.Blog
 {
     /* Inherit your application services from this class.
      */
-    public abstract class LandWindBlogAppServiceBase : ApplicationService
+    public abstract class BlogAppServiceBase : ApplicationService
     {
-        protected LandWindBlogAppServiceBase()
+        protected BlogAppServiceBase()
         { 
         }
     }

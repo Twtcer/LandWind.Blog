@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Linq;
 using LandWind.Blog.BackgroundJobs;
-using LandWind.Blog.BackgroundJobs.Jobs;
-using LandWind.Blog.Domain.Configurations;
-using LandWind.Blog.EntityFrameworkCore;
+using LandWind.Blog.Core.Domain.Options;
 using LandWind.Blog.HttpApi.Hosting.Filters;
 using LandWind.Blog.HttpApi.Hosting.Middleware;
-using LandWind.Blog.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
@@ -24,9 +21,7 @@ namespace LandWind.Blog.HttpApi.Hosting
     [DependsOn(
         typeof(AbpAutofacModule),
         typeof(AbpAspNetCoreMvcModule),
-        typeof(LandWindBlogHttpApiModule),
-        typeof(LandWindBlogSwaggerModule),
-        typeof(LandWindBlogEFCoreModule),
+        typeof(LandWindBlogHttpApiModule), 
         typeof(LandWindBlogBackgroundJobsModule)
         )]
     public class LandWindBlogHttpApiHostingModule : AbpModule

@@ -7,7 +7,7 @@ namespace LandWind.Blog.Application.Blog
     /// <summary>
     /// BlogService
     /// </summary>
-    public partial class BlogService : LandWindBlogAppServiceBase/*, IBlogService*/
+    public partial class BlogService : BlogAppServiceBase/*, IBlogService*/
     {
         //private readonly IPostRepository _postRepository;
         //public BlogService(IPostRepository postRepository)

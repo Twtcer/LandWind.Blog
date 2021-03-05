@@ -1,151 +1,160 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using LandWind.Blog.Application.Authorize.OAuth;
 using LandWind.Blog.Application.Caching.Authorize;
-using LandWind.Blog.Core.Auth.Github;
-using LandWind.Blog.Core.Domain.Options;
+using LandWind.Blog.Application.Tool;
+using LandWind.Blog.Application.Users;
+using LandWind.Blog.Core.Domain.Users;
+using LandWind.Blog.Core.Dto.Authorize;
+using LandWind.Blog.Core.Dto.Tools;
 using LandWind.Blog.Core.Extensions;
+using LandWind.Blog.Core.Options;
 using LandWind.Blog.Core.Response.Base;
-using LandWind.Blog.Domain.Configurations; 
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace LandWind.Blog.Application.Authorize
-{
-    public class AuthorizeService : LandWindBlogAppServiceBase, IAuthorizeService
+{ 
+    public class AuthorizeService : BlogAppServiceBase, IAuthorizeService
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        //private readonly Appsettings _appsettings;
+        private readonly JwtOptions _jwtOptions;
+        private readonly IToolService _toolService;
         private readonly IAuthorizeCacheService _authorizeCacheService;
-        public AuthorizeService(IHttpClientFactory httpClientFactory, IAuthorizeCacheService authorizeCacheService)
+        private readonly IUserService _userService;
+        private readonly OAuthGithubService _githubService;
+
+        public AuthorizeService(
+                IOptions<JwtOptions> jwtOptions,
+                IToolService toolService,
+                IAuthorizeCacheService authorizeCacheService,
+                IUserService userService,
+                OAuthGithubService githubService
+            )
         {
-            _httpClientFactory = httpClientFactory;
+            _jwtOptions = jwtOptions.Value;
+            _toolService = toolService;
             _authorizeCacheService = authorizeCacheService;
+            _userService = userService;
+            _githubService = githubService;
         }
 
         /// <summary>
-        /// 获取登录地址
+        /// Get authorize url
         /// </summary>
+        /// <param name="type"></param>
         /// <returns></returns>
-        public async Task<ResponseResult<string>> GetLoginAddressAsync()
+        [Route("api/landwind/oauth/{type}")]
+        public async Task<ResponseResult<string>> GetAuthorizeUrlAsync(string type)
         {
-            return await _authorizeCacheService.GetLoginAddressAsync(async () =>
+            var state = StateManager.Instance.Get();
+            var response = new ResponseResult<string>
             {
-                var result = new ResponseResult<string>();
-
-                var req = new AuthorizeRequest();
-                var address = string.Concat(new string[]{
-                 GithubConfig.ApiAuthorizeUrl,
-                    "?client_id=", req.ClientId,
-                    "&scope=", req.Scope,
-                    "&state=", req.State,
-                    "&redirect_uri=", req.RedirectUri
-            });
-                result.IsSuccess(address);
-
-                return await Task.FromResult(result);
-            });
-        }
-
-        /// <summary>
-        /// 获取AccessToken
-        /// </summary>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        public async Task<ResponseResult<string>> GetAccessTokenAsync(string code)
-        {
-            var result = new ResponseResult<string>();
-
-            if (string.IsNullOrEmpty(code))
-            {
-                result.IsFailed("code为空");
-                return result;
-            }
-
-            return await _authorizeCacheService.GetAccessTokenAsync(code, async () =>
-            {
-                var request = new AccessTokenRequest();
-                var content = new StringContent($"code={code}&client_id={request.ClientId}&redirect_uri={request.RedirectUri}&client_secret={request.ClientSecret}");
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-
-                using var client = _httpClientFactory.CreateClient();
-                var httpResponse = await client.PostAsync(GithubConfig.ApiAccessTokenUrl, content);
-                var response = await httpResponse.Content.ReadAsStringAsync();
-
-                if (response.StartsWith("access_token"))
+                Result = type switch
                 {
-                    result.IsSuccess(response.Split("=")[1].Split("&").First());
+                    "" => await _githubService.GetAuthorizeUrlAsync(state),
+                    _ => throw new NotImplementedException($"Not implemented:{type}")
                 }
-                else
-                {
-                    result.IsFailed("code不正确");
-                }
-
-                return result;
-            });
-        }
-        public async Task<ResponseResult<string>> GenerateTokenAsync(string accessToken)
-        {
-            var result = new ResponseResult<string>();
-            if (string.IsNullOrEmpty(accessToken))
-            {
-                result.IsFailed("access_token 为空");
-                return result;
-            }
-
-            return await _authorizeCacheService.GenerateTokenAsync(accessToken, async () =>
-            {
-                var url = $"{GithubConfig.ApiUserUrl}?access_token={accessToken}";
-                using var client = _httpClientFactory.CreateClient();
-                client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.74");
-                client.DefaultRequestHeaders.Add("Authorization",$"token {accessToken}");
-                var httpResponse = await client.GetAsync(url);
-                if (httpResponse.StatusCode != System.Net.HttpStatusCode.OK)
-                {
-                    result.IsFailed("access_token不正确");
-                    return result;
-                }
-
-                var content = await httpResponse.Content.ReadAsStringAsync();
-                var user = content.DeserializeToObject<UserResponse>();
-                if (user == null)
-                {
-                    result.IsFailed("为获取到用户数据");
-                    return result;
-                }
-
-                if (user.Id != GithubConfig.UserId)
-                {
-                    result.IsFailed("当前账号未授权");
-                    return result;
-                }
-
-                var claims = new[] {
-                new Claim(ClaimTypes.Name,user.Name),
-                new Claim(ClaimTypes.Email,user.Email),
-                new Claim(JwtRegisteredClaimNames.Exp,$"{new DateTimeOffset(DateTime.Now.AddMinutes(Appsettings.JWT.Expires)).ToUnixTimeSeconds()}"),
-                new Claim(JwtRegisteredClaimNames.Nbf,$"{new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()}")
             };
 
-                var key = new SymmetricSecurityKey(Appsettings.JWT.SecurityKey.ToUtf8());
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            return response;
+        }
 
-                var securityToken = new JwtSecurityToken(
-                    issuer: Appsettings.JWT.Domain,
-                    audience: Appsettings.JWT.Domain,
-                    claims: claims,
-                    expires: DateTime.Now.AddMinutes(Appsettings.JWT.Expires),
-                    signingCredentials: creds
-                    );
+        public Task<ResponseResult<string>> GenerateTokenAsync([Required] string code)
+        {
+            throw new NotImplementedException();
+        }
 
-                var token = new JwtSecurityTokenHandler().WriteToken(securityToken);
-                result.IsSuccess(token);
+        /// <summary>
+        ///  Generate token by <paramref name="type">
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="code"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/landwind/oauth/{type}/token")]
+        public async Task<ResponseResult<string>> GenerateTokenAsync(string type, string code, string state)
+        {
+            var response = new ResponseResult<string>();
+            if (!StateManager.IsExist(state))
+            {
+                response.IsFailed("Request failed");
+                return response;
+            }
 
-                return await Task.FromResult(result);
+            StateManager.Remove(state);
+            var token = type switch
+            {
+                "github" => GenerateToken(await _githubService.GetUserByOAuthAsync(type, code, state)),
+                _ => throw new NotImplementedException($"Not implemented {type}")
+            };
+            response.IsSuccess(token);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Generate token by account.
+        /// </summary>
+        /// <param name="userService"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [Route("api/landwind/oauth/account/token")]
+        public async Task<ResponseResult<string>> GenerateTokenAsync([FromServices] IUserService userService, AccountInput input)
+        {
+            var response = new ResponseResult<string>();
+            var user = await userService.VerifyByAccountAsync(input.Username, input.Password);
+            var token = GenerateToken(user);
+            response.IsSuccess(token);
+
+            return await Task.FromResult(response);
+        }
+
+        /// <summary>
+        /// Send authorization code
+        /// </summary>
+        /// <returns></returns>
+        [Route("api/landwind/oauth/code/send")]
+        public async Task<ResponseResult> SendAuthorizeCodeAsync()
+        {
+            var response = new ResponseResult();
+            var length = 6;
+            var code = length.GenerateRandomCode();
+            await _authorizeCacheService.AddAuthorizeCodeAsync(code);
+            await _toolService.SendMessageAsync(new SendMessageInput { 
+                Text  =code
             });
 
+            return response;
         }
+
+        private string GenerateToken(User user)
+        {
+            var claims = new[] {
+                new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+                new Claim(ClaimTypes.Name,user.Name),
+                new Claim(ClaimTypes.Email,user.Email),
+                new Claim("avatar",user.Avatar),
+                new Claim(JwtRegisteredClaimNames.Exp,$"{new DateTimeOffset(DateTime.Now.AddMinutes(_jwtOptions.Expires)).ToUnixTimeSeconds()}"),
+                new Claim(JwtRegisteredClaimNames.Nbf,$"{new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()}")
+            };
+            var key = new SymmetricSecurityKey(_jwtOptions.SigningKey.GetBytes());
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var securityToken = new JwtSecurityToken(
+                issuer: _jwtOptions.Issuer,
+                audience: _jwtOptions.Audience,
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(_jwtOptions.Expires),
+                signingCredentials: creds
+                );
+            var token = new JwtSecurityTokenHandler().WriteToken(securityToken);
+
+            return token;
+        } 
     }
 }

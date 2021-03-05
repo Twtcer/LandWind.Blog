@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using LandWind.Blog.Core.Extensions;
-using LandWind.Blog.Domain.Shared;
 using Microsoft.Extensions.Caching.Distributed;
-using static LandWind.Blog.Application.Caching.LandWindBlogApplicationCachingConsts;
+using static LandWind.Blog.Application.Caching.ApplicationCachingConsts;
 
 namespace LandWind.Blog.Core.Caching
 {
@@ -39,7 +35,7 @@ namespace LandWind.Blog.Core.Caching
             }
             else
             {
-                cacheItem = result.DeserializeToObject<TCacheItem>();
+                cacheItem = result.Deserialize<TCacheItem>();
             }
 
             return cacheItem;

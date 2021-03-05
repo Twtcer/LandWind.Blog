@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LandWind.Blog.Core\LandWind.Blog.Core.csproj" />
+    <ProjectReference Include="..\LandWind.Blog.EntityFrameworkCore\LandWind.Blog.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
 </Project>

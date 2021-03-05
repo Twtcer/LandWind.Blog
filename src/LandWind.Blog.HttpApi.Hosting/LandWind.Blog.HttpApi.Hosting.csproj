@@ -19,14 +19,15 @@
   </PropertyGroup>
 
   <ItemGroup> 
+    <ProjectReference Include="..\LandWind.Blog.Application\LandWind.Blog.Application.csproj" /> 
     <ProjectReference Include="..\LandWind.Blog.BackgroundJobs\LandWind.Blog.BackgroundJobs.csproj" /> 
-    <ProjectReference Include="..\LandWind.Blog.EntityFrameworkCore.DbMigrations\LandWind.Blog.EntityFrameworkCore.DbMigrations.csproj" /> 
-    <ProjectReference Include="..\LandWind.Blog.EntityFrameworkCore\LandWind.Blog.EntityFrameworkCore.csproj" /> 
     <ProjectReference Include="..\LandWind.Blog.HttpApi\LandWind.Blog.HttpApi.csproj" /> 
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference> 
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.7" /> 
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="6.1.0" /> 
     <PackageReference Include="Volo.Abp.Autofac" Version="4.2.0" /> 
   </ItemGroup>
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LandWind.Blog.Application.Users;
+using LandWind.Blog.Core.Dto.Authorize;
 using LandWind.Blog.Core.Response.Base;
 
 namespace LandWind.Blog.Application.Authorize
@@ -10,24 +12,39 @@ namespace LandWind.Blog.Application.Authorize
     public interface IAuthorizeService
     {
         /// <summary>
-        /// 获取登录地址
+        /// 获取授权地址
         /// </summary>
         /// <returns></returns>
-        Task<ResponseResult<string>> GetLoginAddressAsync();
+        Task<ResponseResult<string>> GetAuthorizeUrlAsync(string type);
 
         /// <summary>
-        /// 获取AssessToken
+        /// 获取Token
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        Task<ResponseResult<string>> GetAccessTokenAsync(string code);
+        Task<ResponseResult<string>> GenerateTokenAsync(string code);
 
         /// <summary>
-        /// 登录成功，生成Token
+        /// 获取Token
         /// </summary>
-        /// <param name="accessToken"></param>
+        /// <param name="type"></param>
+        /// <param name="code"></param>
+        /// <param name="state"></param>
         /// <returns></returns>
-        Task<ResponseResult<string>> GenerateTokenAsync(string accessToken);
+        Task<ResponseResult<string>> GenerateTokenAsync(string type, string code, string state); 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userService"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<ResponseResult<string>> GenerateTokenAsync(IUserService userService, AccountInput input);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        Task<ResponseResult> SendAuthorizeCodeAsync();
     }
 }

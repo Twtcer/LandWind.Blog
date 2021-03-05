@@ -4,26 +4,26 @@
         <name>LandWind.Blog.HttpApi</name>
     </assembly>
     <members>
-        <member name="T:LandWind.Blog.HttpApi.Controllers.BlogController">
+        <member name="T:LandWind.Blog.HttpApi.Controllers.BlogPostController">
             <summary>
             博客文章接口
             </summary>
         </member>
-        <member name="M:LandWind.Blog.HttpApi.Controllers.BlogController.InsertPostAsync(LandWind.Blog.Application.Contracts.Blog.PostDto)">
+        <member name="M:LandWind.Blog.HttpApi.Controllers.BlogPostController.InsertPostAsync(LandWind.Blog.Core.Dto.Blog.PostDto)">
             <summary>
             添加博客
             </summary>
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="M:LandWind.Blog.HttpApi.Controllers.BlogController.DeletePostAsync(System.Int32)">
+        <member name="M:LandWind.Blog.HttpApi.Controllers.BlogPostController.DeletePostAsync(System.Int32)">
             <summary>
             删除博客
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:LandWind.Blog.HttpApi.Controllers.BlogController.UpdatePostAsync(System.Int32,LandWind.Blog.Application.Contracts.Blog.PostDto)">
+        <member name="M:LandWind.Blog.HttpApi.Controllers.BlogPostController.UpdatePostAsync(System.Int32,LandWind.Blog.Core.Dto.Blog.PostDto)">
             <summary>
             更新博客
             </summary>
@@ -31,41 +31,36 @@
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="M:LandWind.Blog.HttpApi.Controllers.BlogController.GetPostAsync(System.Int32)">
+        <member name="M:LandWind.Blog.HttpApi.Controllers.BlogPostController.GetPostAsync(System.Int32)">
             <summary>
             获取博客
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="T:LandWind.Blog.HttpApi.Controllers.GithubAuthController">
+        <member name="T:LandWind.Blog.HttpApi.Grouping">
             <summary>
-            授权控制器
+            分组
             </summary>
         </member>
-        <member name="M:LandWind.Blog.HttpApi.Controllers.GithubAuthController.GetLoginAddressAsync">
+        <member name="F:LandWind.Blog.HttpApi.Grouping.GroupName_v1">
             <summary>
-            获取登录地址
+            博客前台接口
             </summary>
-            <returns></returns>
         </member>
-        <member name="M:LandWind.Blog.HttpApi.Controllers.GithubAuthController.GetAccessTokenAsync(System.String)">
+        <member name="F:LandWind.Blog.HttpApi.Grouping.GroupName_v2">
             <summary>
-            获取AccessToken
+            博客后台接口
             </summary>
-            <param name="code"></param>
-            <returns></returns>
         </member>
-        <member name="M:LandWind.Blog.HttpApi.Controllers.GithubAuthController.GenerateTokenAsync(System.String)">
+        <member name="F:LandWind.Blog.HttpApi.Grouping.GroupName_v3">
             <summary>
-            登录成功，生成token
+            其他通用接口
             </summary>
-            <param name="access_token"></param>
-            <returns></returns>
         </member>
-        <member name="T:LandWind.Blog.HttpApi.Controllers.HelloWorldController">
+        <member name="F:LandWind.Blog.HttpApi.Grouping.GroupName_v4">
             <summary>
-            HelloWorld 测试接口
+            JWT授权接口
             </summary>
         </member>
     </members>

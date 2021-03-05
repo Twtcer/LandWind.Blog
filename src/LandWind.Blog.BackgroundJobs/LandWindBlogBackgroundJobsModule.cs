@@ -1,8 +1,8 @@
 ﻿using Hangfire;
 using Hangfire.Dashboard.BasicAuthorization;
-using Hangfire.MySql;
-using LandWind.Blog.Core.Const;
+using Hangfire.MySql; 
 using LandWind.Blog.Core.Domain.Options;
+using LandWind.Blog.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.BackgroundJobs.Hangfire;
 using Volo.Abp.Modularity;
