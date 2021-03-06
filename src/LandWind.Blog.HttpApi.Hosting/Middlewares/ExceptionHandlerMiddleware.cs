@@ -5,7 +5,7 @@ using LandWind.Blog.Core.Extensions;
 using LandWind.Blog.Core.Response.Base;
 using Microsoft.AspNetCore.Http;
 
-namespace LandWind.Blog.HttpApi.Hosting.Middleware
+namespace LandWind.Blog.Api.Middleware
 {
     /// <summary>
     /// 异常处理中间件

@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace LandWind.Blog.Swagger.Filters
+namespace LandWind.Blog.Api.Swagger.Filters
 {
     /// <summary>
     /// Controller 扩展信息

@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LandWind.Blog.Application</name>
+    </assembly>
+    <members>
+        <member name="M:LandWind.Blog.Application.Authorize.AuthorizeService.GetAuthorizeUrlAsync(System.String)">
+            <summary>
+            Get authorize url
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LandWind.Blog.Application.Authorize.AuthorizeService.GenerateTokenAsync(System.String,System.String,System.String)" -->
+        <member name="M:LandWind.Blog.Application.Authorize.AuthorizeService.GenerateTokenAsync(LandWind.Blog.Application.Users.IUserService,LandWind.Blog.Core.Dto.Authorize.AccountInput)">
+            <summary>
+            Generate token by account.
+            </summary>
+            <param name="userService"></param>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Authorize.AuthorizeService.SendAuthorizeCodeAsync">
+            <summary>
+            Send authorization code
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Authorize.IAuthorizeService.GetAuthorizeUrlAsync(System.String)">
+            <summary>
+            获取授权地址
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Authorize.IAuthorizeService.GenerateTokenAsync(System.String)">
+            <summary>
+            获取Token
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Authorize.IAuthorizeService.GenerateTokenAsync(System.String,System.String,System.String)">
+            <summary>
+            获取Token
+            </summary>
+            <param name="type"></param>
+            <param name="code"></param>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Authorize.IAuthorizeService.GenerateTokenAsync(LandWind.Blog.Application.Users.IUserService,LandWind.Blog.Core.Dto.Authorize.AccountInput)">
+            <summary>
+            
+            </summary>
+            <param name="userService"></param>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Authorize.IAuthorizeService.SendAuthorizeCodeAsync">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LandWind.Blog.Application.Authorize.OAuth.IOAuthService`2">
+            <summary>
+            授权接口
+            </summary>
+            <typeparam name="TAccessToken"></typeparam>
+            <typeparam name="TUserInfo"></typeparam>
+        </member>
+        <member name="T:LandWind.Blog.Application.Authorize.OAuth.OAuthServiceBase`3">
+            <summary>
+            OAuth 基类
+            </summary>
+            <typeparam name="TOptions"></typeparam>
+            <typeparam name="TAccessToken"></typeparam>
+            <typeparam name="TUserInfo"></typeparam>
+        </member>
+        <member name="T:LandWind.Blog.Application.Blog.BlogService">
+            <summary>
+            BlogService
+            </summary>
+        </member>
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`2.QueryAsync(LandWind.Blog.Core.Response.Base.PagingInput)">
+            <summary>
+            分页查询
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`2.GetAsync(System.Int32)">
+            <summary>
+            获取单个模型
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`2.InsertAsync(`0)">
+            <summary>
+            添加
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`2.DeleteAsync(System.Int32)">
+            <summary>
+            删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`2.UpdateAsync(System.Int32,`0)">
+            <summary>
+            更新
+            </summary>
+            <param name="id"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LandWind.Blog.Application.Caching.BlogCacheService`1">
+            <summary>
+            博客缓存服务
+            </summary>
+            <typeparam name="QueryDto"></typeparam>
+        </member>
+        <member name="T:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheKeys">
+            <summary>
+            CacheKeys
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy">
+            <summary>
+            缓存过期时间策略
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.OneDay">
+            <summary>
+            1day 24h
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.HalfDay">
+            <summary>
+             12h 
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.EightHours">
+            <summary>
+            8h
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.FourHours">
+            <summary>
+            4h
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.ThreeHours">
+            <summary>
+            3小时过期
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.TwoHours">
+            <summary>
+            2小时过期
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.OneHours">
+            <summary>
+            1小时过期
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.HalfHours">
+            <summary>
+            半小时过期
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.FiveMinute">
+            <summary>
+            5分钟过期
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.OneMinute">
+            <summary>
+            1分钟过期
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheStrategy.Never">
+            <summary>
+            永不过期
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Application.Caching.CachingServiceBase">
+            <summary>
+            缓存服务基类注入
+            </summary>
+        </member>
+        <member name="M:LandWind.Blog.Application.Caching.CachingServiceBase.RemoveAsync(System.String)">
+            <summary>
+            移除键
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Caching.IBlogCacheService`1.QueryAsync(LandWind.Blog.Core.Response.Base.PagingInput,System.Func{System.Threading.Tasks.Task{LandWind.Blog.Core.Response.Base.ResponseResult{LandWind.Blog.Core.Response.Base.PagedList{`0}}}})">
+            <summary>
+            分页查询
+            </summary>
+            <param name="input"></param>
+            <param name="factory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Caching.LandWindBlogApplicationCachingExtensions.GetOrAddAsync``1(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String,System.Func{System.Threading.Tasks.Task{``0}},System.Int32)">
+            <summary>
+            获取缓存对象，不存在则添加
+            </summary>
+            <typeparam name="TCacheItem"></typeparam>
+            <param name="cache"></param>
+            <param name="key"></param>
+            <param name="factory"></param>
+            <param name="minutes"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>LandWind.Blog.HttpApi.Hosting</RootNamespace>
+    <RootNamespace>LandWind.Blog.Api</RootNamespace>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
@@ -13,26 +13,25 @@
     <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
     <UserSecretsId>LandWind.Blog-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
-    <AssemblyName>LandWind.Blog.HttpApi.Hosting</AssemblyName>
+    <AssemblyName>LandWind.Blog.Api</AssemblyName>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup> 
     <ProjectReference Include="..\LandWind.Blog.Application\LandWind.Blog.Application.csproj" /> 
-    <ProjectReference Include="..\LandWind.Blog.BackgroundJobs\LandWind.Blog.BackgroundJobs.csproj" /> 
-    <ProjectReference Include="..\LandWind.Blog.HttpApi\LandWind.Blog.HttpApi.csproj" /> 
+    <ProjectReference Include="..\LandWind.Blog.BackgroundJobs\LandWind.Blog.BackgroundJobs.csproj" />  
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference> 
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.7" /> 
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="6.1.0" /> 
-    <PackageReference Include="Volo.Abp.Autofac" Version="4.2.0" /> 
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="4.2.2" /> 
+    <PackageReference Include="Volo.Abp.Autofac" Version="4.2.0" />  
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Logs\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

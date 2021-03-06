@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "LandWind.Blog.HttpApi.Hosting": {
+    "LandWind.Blog.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -9,7 +9,7 @@ using Volo.Abp.Modularity;
 namespace LandWind.Blog.EntityFrameworkCore.DbMigrations
 {
     [DependsOn(
-        typeof(LandWindBlogEFCoreModule)
+        typeof(LandWindBlogEfCoreDbModule)
         )]
     public class LandWindBlogEFCoreDbMigrationsModule:AbpModule
     {

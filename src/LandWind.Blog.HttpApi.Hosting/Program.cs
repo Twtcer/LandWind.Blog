@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using LandWind.Blog.Core.Extensions;
 
-namespace LandWind.Blog.HttpApi.Hosting
+namespace LandWind.Blog.Api
 {
     public class Program
     {
@@ -15,8 +15,7 @@ namespace LandWind.Blog.HttpApi.Hosting
                       {
                           builder
                           .UseIISIntegration()
-                                 .UseStartup<Startup>();
-
+                          .UseStartup<Startup>();
                       })
                       .UseLog4Net()
                       .UseAutofac()

@@ -1,5 +1,4 @@
-﻿using LandWind.Blog.EntityFrameworkCore.DbMigrations;
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -12,7 +11,7 @@ using Volo.Abp.Modularity;
 namespace LandWind.Blog.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(LandWindBlogEFCoreModule),
+        typeof(LandWindBlogEfCoreDbModule),
         typeof(BlogTestBaseModule),
         typeof(AbpEntityFrameworkCoreSqliteModule)
         )]
