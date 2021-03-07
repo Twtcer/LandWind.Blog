@@ -1,0 +1,77 @@
+swagger:
+  version: 'v1.0.0'
+  name: 'landwind blog'
+  title: 'landwind blog api'
+  description: 'net5,web assmbly,blog'
+  routerPrefix: ''
+  documentTitle: 'LandWind Blog'
+
+storage:
+  enableDb: 'mysql' 
+  mysql: 'Server=LandWind;port=8898;User Id=root;Password=sa123SA!@#;Database=LandWindBlogDb;Allow User Variables=true'
+  mssql: 'Data Source=LandWind,8899;User Id=sa;Password=sa123SA!@#;Initial Catalog=LandWindBlogDb;Pooling=true;Min Pool Size=1'
+  postgresql: ''
+  sqlite: ''
+  redisStatus: 'true'
+  redisConnection: 'LandWind:8895,password=123456,ConnectTimeout=15000,SyncTimeout=5000'
+
+cros:
+  policyName: 'landwind-policy'
+  origins: ''
+
+jwt:
+  issuer: 'landwind blog'
+  audience: 'landwind blog api'
+  signingKey: 'H4sIAAAAAAAAA3N0cnZxdXP38PTy9vH18w8I9AkOCQ0Lj4iMAgDB4fXPGgAAAA=='
+
+signature:
+  path: 'D:\static\signature'
+  urls:
+  - url: 'https://api1.meowv.com'
+    param: '1'
+  - url: 'https://api2.meowv.com'
+    param: '2'
+  - url: 'https://api3.meowv.com'
+    param: '3'
+
+authorize:
+  github:
+    clientId: '03309b1ef13ebe9f5e6f'
+    clientSecret: '25447dbd2027d8a44d6a37eef9dc1d22a9286a05'
+    redirectUrl: 'https://admin.frp.quick360.tech/oauth/github'
+    scope: 'user'
+  gitee:
+    clientId: '2aa9116886160b7a7d5d87f043df4f3331d15ac1b1f3b57844d87e0b7b62e9c2'
+    clientSecret: ''
+    redirectUrl: 'https://admin.frp.quick360.tech/oauth/gitee'
+    scope: 'user_info emails'
+  alipay:
+    appId: '2021002125624107'
+    redirectUrl: 'https://admin.frp.quick360.tech/oauth/alipay'
+    scope: 'auth_user'
+    privateKey: ''
+    publicKey: ''
+  dingtalk:
+    appId: 'dingoakqr9viaxcysinlzh'
+    appSecret: ''
+    redirectUrl: 'https://admin.frp.quick360.tech/oauth/dingtalk'
+    scope: 'snsapi_login'
+  microsoft:
+    clientId: 'b4c12337-8504-4da9-b85a-4961b7771426'
+    clientSecret: ''
+    redirectUrl: 'https://admin.frp.quick360.tech/oauth/microsoft'
+    scope: 'user.read'
+  weibo:
+    clientId: '3725213942'
+    clientSecret: ''
+    redirectUrl: 'https://admin.frp.quick360.tech/oauth/weibo'
+    scope: 'all'
+  qq:
+    clientId: '101935194'
+    clientSecret: ''
+    redirectUrl: 'https://admin.frp.quick360.tech/oauth/qq'
+    scope: 'get_user_info'
+
+worker:
+  isEnabled: true
+  cron: '0 0 0/1 * * ? *'

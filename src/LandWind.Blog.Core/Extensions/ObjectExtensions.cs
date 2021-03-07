@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
 namespace LandWind.Blog.Core.Extensions
@@ -62,6 +64,11 @@ namespace LandWind.Blog.Core.Extensions
             return dict.Select(x => $"{HttpUtility.UrlEncode(x.Key, encoding)}={HttpUtility.UrlEncode(x.Value, encoding)}").JoinAsString("&");
         }
 
+        /// <summary>
+        ///  生成特定长度随机字符
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
         public static string GenerateRandomCode(this int length)
         {
             int rand;
@@ -83,6 +90,25 @@ namespace LandWind.Blog.Core.Extensions
                 randCode += code.ToString();
             }
             return randCode;
+        }
+
+        /// <summary>
+        /// Get data from json file
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="filePath"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static async Task<T> FromJsonFile<T>(this string filePath, string key = "") where T : new()
+        {
+            if (!File.Exists(filePath)) return new T();
+
+            using StreamReader reader = new StreamReader(filePath);
+            var json = await reader.ReadToEndAsync();
+
+            if (string.IsNullOrEmpty(key)) return JsonConvert.DeserializeObject<T>(json);
+
+            return JsonConvert.DeserializeObject<object>(json) is not JObject obj ? new T() : JsonConvert.DeserializeObject<T>(obj[key].ToString());
         }
 
     }

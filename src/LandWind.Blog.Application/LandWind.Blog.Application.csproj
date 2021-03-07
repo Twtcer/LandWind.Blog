@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>..\LandWind.Blog.HttpApi.Hosting\LandWind.Blog.Application.xml</DocumentationFile>
+    <DocumentationFile>..\LandWind.Blog.Api\LandWind.Blog.Application.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,10 +20,6 @@
     <PackageReference Include="Volo.Abp.AutoMapper" Version="4.2.1" /> 
     <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="4.2.1" /> 
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="4.2.1" /> 
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DataSeed\" />
   </ItemGroup>
 
 </Project>

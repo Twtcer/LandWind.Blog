@@ -1,5 +1,4 @@
 ﻿using System;
-using LandWind.Blog.BackgroundJobs;
 using LandWind.Blog.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -26,16 +25,19 @@ using Microsoft.OpenApi.Models;
 using System.IO;
 using LandWind.Blog.Api.Swagger.Filters;
 using Swashbuckle.AspNetCore.Filters;
+using LandWind.Blog.BackgroundWorkers;
+using Volo.Abp.AspNetCore.Serilog;
 
 namespace LandWind.Blog.Api
 {
     [DependsOn(
         typeof(AbpAutofacModule),
+        typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpAspNetCoreMvcModule),
         typeof(AbpCachingStackExchangeRedisModule),
         typeof(LandWindBlogApplicationModule),
         typeof(LandWindBlogEfCoreDbModule),
-        typeof(LandWindBlogBackgroundJobsModule)
+        typeof(LandWindBlogBackgroundWorksModule)
         )]
     public class LandWindBlogApiModule : AbpModule
     {
@@ -56,7 +58,7 @@ namespace LandWind.Blog.Api
             ConfigureRouting(context.Services);
             ConfigureRedis(context.Services);
             ConfigureCors(context.Services);
-            CofiggureHealthChecks(context.Services);
+            CofigureHealthChecks(context.Services);
             ConfigureAuthentication(context.Services);
             ConfigureSwaggerServices(context.Services);
         }
@@ -110,7 +112,7 @@ namespace LandWind.Blog.Api
             });
         }
 
-        private void CofiggureHealthChecks(IServiceCollection services)
+        private void CofigureHealthChecks(IServiceCollection services)
         {
             //services.AddHealthChecks()
             //        .AddMongoDb(AppOptions.Storage.Mongodb, name: "MongoDB", timeout: TimeSpan.FromSeconds(3))
@@ -266,23 +268,23 @@ namespace LandWind.Blog.Api
                 ForwardLimit = null
             });
 
-            app.UseHealthChecks("/api/landwind/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
-            {
-                ResponseWriter = (context, healthReport) =>
-                {
-                    context.Response.ContentType = "application/json;charset=utf-8";
-                    context.Response.StatusCode = StatusCodes.Status200OK;
+            //app.UseHealthChecks("/api/landwind/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+            //{
+            //    ResponseWriter = (context, healthReport) =>
+            //    {
+            //        context.Response.ContentType = "application/json;charset=utf-8";
+            //        context.Response.StatusCode = StatusCodes.Status200OK;
 
-                    var result = healthReport.Entries.Select(a => new NameValue
-                    {
-                        Name = a.Key,
-                        Value = a.Value.Status.ToString()
-                    });
-                    var response = new ResponseResult<IEnumerable<NameValue>>();
+            //        var result = healthReport.Entries.Select(a => new NameValue
+            //        {
+            //            Name = a.Key,
+            //            Value = a.Value.Status.ToString()
+            //        });
+            //        var response = new ResponseResult<IEnumerable<NameValue>>();
 
-                    return context.Response.WriteAsJsonAsync(response);
-                }
-            });
+            //        return context.Response.WriteAsJsonAsync(response);
+            //    }
+            //});
 
             app.UseHsts();
             //路由
@@ -301,7 +303,8 @@ namespace LandWind.Blog.Api
                 options.SwaggerEndpoint($"/swagger/{AppOptions.Swagger.Name}/swagger.json", AppOptions.Swagger.Title);
                 options.DefaultModelsExpandDepth(-1);//默认不展开节点
                 options.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
-                options.RoutePrefix = AppOptions.Swagger.RouterPrefix;
+                //options.RoutePrefix = AppOptions.Swagger.RoutePrefix;
+                options.RoutePrefix = "";
                 options.DocumentTitle = AppOptions.Swagger.DocumentTitle;
             });
 

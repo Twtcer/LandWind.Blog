@@ -10,11 +10,11 @@ namespace LandWind.Blog.Core.Options
     /// Db storeage options
     /// </summary>
     public class StorageOptions
-    {
+    { 
         /// <summary>
         /// 启用数据库
         /// </summary>
-        public string Enable { get; set; }
+        public string EnableDb { get; set; }
 
         /// <summary>
         /// 数据库连接字符串 

@@ -15,7 +15,7 @@ namespace LandWind.Blog.Core.Options
         public string Name { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string RouterPrefix { get; set; }
+        public string RoutePrefix { get; set; } 
         public string DocumentTitle { get; set; }
     }
 }

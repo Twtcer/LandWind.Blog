@@ -1,0 +1,471 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LandWind.Blog.Core</name>
+    </assembly>
+    <members>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Category.CategoryName">
+            <summary>
+            分类名称
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Category.DisplayName">
+            <summary>
+            展示名称
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.FriendLink.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.FriendLink.LinkUrl">
+            <summary>
+            链接
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Domain.Entities.HotNews">
+            <summary>
+            热点新闻
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Domain.Entities.Post">
+            <summary>
+            post 文章
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Post.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Post.Author">
+            <summary>
+            作者
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Post.Url">
+            <summary>
+            链接
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Post.Html">
+            <summary>
+            HTML
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Post.Markdown">
+            <summary>
+            Markdown
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Post.CategoryId">
+            <summary>
+            分类Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Post.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.PostTag.PostId">
+            <summary>
+            文章Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.PostTag.TagId">
+            <summary>
+            标签Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Tag.TagName">
+            <summary>
+            标签名称
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Tag.DisplayName">
+            <summary>
+            展示名称
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Domain.IBulkInsert`1">
+            <summary>
+            批量插入接口
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Domain.Users.Repositories.IUserRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Domain.Users.User">
+            <summary>
+            User
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Author">
+            <summary>
+            作者
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Url">
+            <summary>
+            链接
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Html">
+            <summary>
+            HTML
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Markdown">
+            <summary>
+            Markdown
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.CategoryId">
+            <summary>
+            分类Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Dto.Blog.PostBriefDto">
+            <summary>
+            文章模型
+            </summary>
+        </member>
+        <member name="M:LandWind.Blog.Core.Extensions.ObjectExtensions.SerializeToJson(System.Object)">
+            <summary>
+            序列号json
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Extensions.ObjectExtensions.Deserialize``1(System.String)">
+            <summary>
+            反序列化对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Extensions.ObjectExtensions.ToUtf8(System.String)">
+            <summary>
+            文本UFT8字节编码
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Extensions.ObjectExtensions.ToQueryString(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            url参数化
+            </summary>
+            <param name="dic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Extensions.ObjectExtensions.ToQueryString(System.Collections.Generic.Dictionary{System.String,System.String},System.Text.Encoding)">
+            <summary>
+            带编码参数化
+            </summary>
+            <param name="dict"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Extensions.ObjectExtensions.GenerateRandomCode(System.Int32)">
+            <summary>
+             生成特定长度随机字符
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Extensions.ObjectExtensions.FromJsonFile``1(System.String,System.String)">
+            <summary>
+            Get data from json file
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="filePath"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LandWind.Blog.Core.Extensions.YamlConfigurationExtensions">
+            <summary>
+            YAML 配置扩展
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Extensions.YamlConfigurationSource">
+            <summary>
+             Yaml 配置源
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Options.AppOptions">
+            <summary>
+            AppOptions
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AppOptions.Swagger">
+            <summary>
+            Swagger
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AppOptions.Storage">
+            <summary>
+            StorageOptions
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AppOptions.Cors">
+            <summary>
+            Cors
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AppOptions.Jwt">
+            <summary>
+            Jwt
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AppOptions.Worker">
+            <summary>
+            Worker
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AppOptions.Signature">
+            <summary>
+            Signature
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AppOptions.TencentCloud">
+            <summary>
+            TencentCloud
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AppOptions.Authorize">
+            <summary>
+            Authorize
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AuthorizeOptions.Github">
+            <summary>
+            Github
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AuthorizeOptions.Gitee">
+            <summary>
+            Gitee
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AuthorizeOptions.Alipay">
+            <summary>
+            Alipay
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AuthorizeOptions.Dingtalk">
+            <summary>
+            Dingtalk
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AuthorizeOptions.Microsoft">
+            <summary>
+            Microsoft
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AuthorizeOptions.Weibo">
+            <summary>
+            Weibo
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AuthorizeOptions.QQ">
+            <summary>
+            QQ
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Options.CorsOptions">
+            <summary>
+            跨域配置
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.CorsOptions.PolicyName">
+            <summary>
+            The name of the policy.
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.CorsOptions.Origins">
+            <summary>
+            The origins that are allowed.
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.JwtOptions.Expires">
+            <summary>
+            Get or set the expiration time(minutes) of the verification token.
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.JwtOptions.Issuer">
+            <summary>
+            Gets or sets a System.String that represents a valid issuer that will be used to check against the token's issuer.
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.JwtOptions.Audience">
+            <summary>
+            Gets or sets a string that represents a valid audience that will be used to check against the token's audience.
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.JwtOptions.SigningKey">
+            <summary>
+            Gets or sets the Microsoft.IdentityModel.Tokens.SecurityKey that is to be used for signature validation.
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Options.StorageOptions">
+            <summary>
+            Db storeage options
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.StorageOptions.EnableDb">
+            <summary>
+            启用数据库
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.StorageOptions.ConnectionString">
+            <summary>
+            数据库连接字符串 
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.StorageOptions.RedisStatus">
+            <summary>
+            redis 启用状态
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.StorageOptions.RedisConnection">
+            <summary>
+            redis 连接字符串
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Options.SwaggerOptions">
+            <summary>
+            SwaggerOptions
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.WorkerOptions.IsEnabled">
+            <summary>
+            Gets or sets whether background worker is enabled
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.WorkerOptions.Cron">
+            <summary>
+            The cron expression to base the schedule on
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Response.Base.PagedList`1.Total">
+            <summary>
+            总数
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Response.Base.PagingInput">
+            <summary>
+            分页参数
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Response.Base.PagingInput.Page">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Response.Base.PagingInput.Limit">
+            <summary>
+            单页数量
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Response.Base.ResponseResult">
+            <summary>
+            接口响应
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Response.Base.ResponseResult.Code">
+            <summary>
+            响应代码
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Response.Base.ResponseResult.Message">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Response.Base.ResponseResult.Success">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Response.Base.ResponseResult.Timestamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="M:LandWind.Blog.Core.Response.Base.ResponseResult.IsSuccess(System.String)">
+            <summary>
+            响应成功 
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:LandWind.Blog.Core.Response.Base.ResponseResult.IsFailed(System.String)">
+            <summary>
+            响应失败
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:LandWind.Blog.Core.Response.Base.ResponseResult.IsFailed(System.Exception)">
+            <summary>
+            响应失败
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="T:LandWind.Blog.Core.Response.Base.ResponseResult`1">
+            <summary>
+            泛型接口响应
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:LandWind.Blog.Core.Response.Base.ResponseResult`1.Result">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="M:LandWind.Blog.Core.Response.Base.ResponseResult`1.IsSuccessed(`0,System.String)">
+            <summary>
+            响应成功
+            </summary>
+            <param name="result"></param>
+            <param name="message"></param>
+        </member>
+        <member name="T:LandWind.Blog.Core.Response.Enum.ResponseResultCode">
+            <summary>
+            接口响应代码
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Core.Response.Enum.ResponseResultCode.Succeed">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Core.Response.Enum.ResponseResultCode.Failed">
+            <summary>
+            失败
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Application.Contracts.Jobs.HotNewsJobItem`1.Result">
+            <summary>
+            <see cref="P:LandWind.Blog.Application.Contracts.Jobs.HotNewsJobItem`1.Result"/>
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Application.Contracts.Jobs.HotNewsJobItem`1.Source">
+            <summary>
+            来源
+            </summary>
+        </member>
+    </members>
+</doc>

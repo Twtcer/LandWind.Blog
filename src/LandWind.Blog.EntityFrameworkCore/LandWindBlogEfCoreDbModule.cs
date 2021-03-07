@@ -1,6 +1,4 @@
-﻿using LandWind.Blog.Core.Domain.Options;
-using LandWind.Blog.Domain;
-using LandWind.Blog.Domain.Configurations;
+﻿using LandWind.Blog.Core.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.MySQL;
@@ -19,8 +17,11 @@ namespace LandWind.Blog.EntityFrameworkCore
         )]
     public class LandWindBlogEfCoreDbModule : AbpModule
     {
+        public AppOptions AppOptions;
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            AppOptions  = context.Services.ExecutePreConfiguredActions<AppOptions>();
+
             context.Services.AddAbpDbContext<LandWindBlogDbContext>(options =>
             {
                 options.AddDefaultRepositories(includeAllEntities: true);
@@ -28,8 +29,8 @@ namespace LandWind.Blog.EntityFrameworkCore
 
             Configure<AbpDbContextOptions>(options =>
             {
-                var connectStr = Appsettings.ConnectionStrings; 
-                switch (Appsettings.EnableDb)
+                var config = context.Services.GetConfiguration(); 
+                switch (AppOptions.Storage.EnableDb)
                 {
                     case "MySql":
                         options.UseMySQL();
