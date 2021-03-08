@@ -31,9 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandWind.Blog.Core", "src\L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandWind.Blog.Api", "src\LandWind.Blog.Api\LandWind.Blog.Api.csproj", "{BDEA5059-0C43-4B92-ACC3-CE390E00FC16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandWind.Blog.BackgroundWorkers", "src\LandWind.Blog.BackgroundWorkers\LandWind.Blog.BackgroundWorkers.csproj", "{1F58F115-8CD5-48CF-86A0-E30392741CC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandWind.Blog.BackgroundWorkers", "src\LandWind.Blog.BackgroundWorkers\LandWind.Blog.BackgroundWorkers.csproj", "{1F58F115-8CD5-48CF-86A0-E30392741CC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandWind.Blog.DbMigrator", "src\LandWind.Blog.DbMigrator\LandWind.Blog.DbMigrator.csproj", "{8704EDDE-26CB-4303-ABFE-FAB61D5A2BC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandWind.Blog.DbMigrator", "src\LandWind.Blog.DbMigrator\LandWind.Blog.DbMigrator.csproj", "{8704EDDE-26CB-4303-ABFE-FAB61D5A2BC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandWind.Blog.Admin", "src\LandWind.Blog.Admin\LandWind.Blog.Admin.csproj", "{DFCC5F7E-2759-457D-941D-5D5A368635F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{8704EDDE-26CB-4303-ABFE-FAB61D5A2BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8704EDDE-26CB-4303-ABFE-FAB61D5A2BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8704EDDE-26CB-4303-ABFE-FAB61D5A2BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFCC5F7E-2759-457D-941D-5D5A368635F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFCC5F7E-2759-457D-941D-5D5A368635F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFCC5F7E-2759-457D-941D-5D5A368635F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFCC5F7E-2759-457D-941D-5D5A368635F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +92,7 @@ Global
 		{BDEA5059-0C43-4B92-ACC3-CE390E00FC16} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{1F58F115-8CD5-48CF-86A0-E30392741CC8} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{8704EDDE-26CB-4303-ABFE-FAB61D5A2BC2} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{DFCC5F7E-2759-457D-941D-5D5A368635F9} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}
