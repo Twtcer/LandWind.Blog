@@ -50,5 +50,10 @@ namespace LandWind.Blog.Core.Options
         /// Authorize
         /// </summary>
         public AuthorizeOptions Authorize { get; set; }
+
+        /// <summary>
+        /// 微信消息推送服务
+        /// </summary>
+        public FtqqOptions Ftqq { get; set; }
     }
 }

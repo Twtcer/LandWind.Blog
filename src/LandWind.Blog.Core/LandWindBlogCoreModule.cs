@@ -22,6 +22,7 @@ namespace LandWind.Blog.Core
             var signature = new SignatureOptions();
             var tencentCloud = new TencentCloudOptions();
             var authorize = new AuthorizeOptions();
+            var ftqq = new FtqqOptions();
 
             PreConfigure<SwaggerOptions>(options =>
             {
@@ -180,6 +181,17 @@ namespace LandWind.Blog.Core
                 //}; 
                 authorize = options;
             });
+            PreConfigure<FtqqOptions>(options =>
+            {
+                var ftqqOptions = configuration.GetSection("ftqq");
+                Configure<FtqqOptions>(ftqqOptions);
+
+                options.ApiUrl = ftqqOptions.GetValue<string>(nameof(options.ApiUrl));
+                options.Token = ftqqOptions.GetValue<string>(nameof(options.Token));
+
+                ftqq = options;
+            });
+
             PreConfigure<AppOptions>(options =>
             {
                 options.Swagger = swagger;
@@ -190,6 +202,7 @@ namespace LandWind.Blog.Core
                 options.Signature = signature;
                 options.TencentCloud = tencentCloud;
                 options.Authorize = authorize;
+                options.Ftqq = ftqq;
 
                 Configure<AppOptions>(item =>
                 {
@@ -201,10 +214,15 @@ namespace LandWind.Blog.Core
                     item.Signature = signature;
                     item.TencentCloud = tencentCloud;
                     item.Authorize = authorize;
+                    item.Ftqq = ftqq;
                 });
-            });
+            }); 
         }
 
+        /// <summary>
+        /// ConfigureServices
+        /// </summary>
+        /// <param name="context"></param>
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.ExecutePreConfiguredActions<SwaggerOptions>();
@@ -215,6 +233,7 @@ namespace LandWind.Blog.Core
             context.Services.ExecutePreConfiguredActions<SignatureOptions>();
             context.Services.ExecutePreConfiguredActions<TencentCloudOptions>();
             context.Services.ExecutePreConfiguredActions<AuthorizeOptions>();
+            context.Services.ExecutePreConfiguredActions<FtqqOptions>();
         }
     }
 }

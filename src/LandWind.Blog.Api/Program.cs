@@ -51,12 +51,13 @@ namespace LandWind.Blog.Api
                     reloadOnChange: true
                     );
                 var configDict = config.Build().ToDictionary();
-                Log.Information("appsettings {@appsettings}", configDict);
+                //Log.Information("appsettings {@appsettings}", configDict);
             })
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();
             })
-            .UseAutofac();
+            .UseAutofac()
+            .UseSerilog();
     }
 }

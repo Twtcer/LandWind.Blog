@@ -16,11 +16,7 @@
     <AssemblyName>LandWind.Blog.Api</AssemblyName>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="appsettings.yml" />
-  </ItemGroup>
+  </PropertyGroup> 
 
   <ItemGroup>
     <Content Include="appsettings.yml">

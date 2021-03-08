@@ -48,7 +48,7 @@ namespace LandWind.Blog.Application.Authorize
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        [Route("api/landwind/oauth/{type}")]
+        [Route("api/oauth/{type}")]
         public async Task<ResponseResult<string>> GetAuthorizeUrlAsync(string type)
         {
             var state = StateManager.Instance.Get();
@@ -77,7 +77,7 @@ namespace LandWind.Blog.Application.Authorize
         /// <param name="state"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("api/landwind/oauth/{type}/token")]
+        [Route("api/oauth/{type}/token")]
         public async Task<ResponseResult<string>> GenerateTokenAsync(string type, string code, string state)
         {
             var response = new ResponseResult<string>();
@@ -104,7 +104,7 @@ namespace LandWind.Blog.Application.Authorize
         /// <param name="userService"></param>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Route("api/landwind/oauth/account/token")]
+        [Route("api/oauth/account/token")]
         public async Task<ResponseResult<string>> GenerateTokenAsync([FromServices] IUserService userService, AccountInput input)
         {
             var response = new ResponseResult<string>();
@@ -119,7 +119,7 @@ namespace LandWind.Blog.Application.Authorize
         /// Send authorization code
         /// </summary>
         /// <returns></returns>
-        [Route("api/landwind/oauth/code/send")]
+        [Route("api/oauth/code/send")]
         public async Task<ResponseResult> SendAuthorizeCodeAsync()
         {
             var response = new ResponseResult();

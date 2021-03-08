@@ -199,6 +199,44 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:LandWind.Blog.Application.Tool.ToolService">
+            <summary>
+             ToolService
+            </summary>
+        </member>
+        <member name="M:LandWind.Blog.Application.Tool.ToolService.GetBingBackgroundImgAsync">
+            <summary>
+            获取必应背景图
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Tool.ToolService.GetBingBackgroundUrlAsync">
+            <summary>
+            获取必应背景图地址
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Tool.ToolService.GetImgAsync(System.String)">
+            <summary>
+            get img 
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Tool.ToolService.Ip2RegionAsync(System.String)">
+            <summary>
+            get ip region 
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Tool.ToolService.SendMessageAsync(LandWind.Blog.Core.Dto.Tools.SendMessageInput)">
+            <summary>
+            send msg by wechat 
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:LandWind.Blog.Core.Caching.IBlogCacheService`1.QueryAsync(LandWind.Blog.Core.Response.Base.PagingInput,System.Func{System.Threading.Tasks.Task{LandWind.Blog.Core.Response.Base.ResponseResult{LandWind.Blog.Core.Response.Base.PagedList{`0}}}})">
             <summary>
             分页查询

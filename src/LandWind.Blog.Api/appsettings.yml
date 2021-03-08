@@ -74,3 +74,7 @@ authorize:
 worker:
   isEnabled: true
   cron: '0 0 0/1 * * ? *'
+
+ftqq:
+  apiUrl: 'https://sc.ftqq.com'
+  token: 'SCU26137Tfd0dab8180663267750654dfa86d604b5af1c450072e7'

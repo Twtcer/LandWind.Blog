@@ -196,6 +196,13 @@
             <param name="key"></param>
             <returns></returns>
         </member>
+        <member name="M:LandWind.Blog.Core.Extensions.ObjectExtensions.IsIp(System.String)">
+            <summary>
+            Check the ip address
+            </summary>
+            <param name="ip"></param>
+            <returns></returns>
+        </member>
         <member name="T:LandWind.Blog.Core.Extensions.YamlConfigurationExtensions">
             <summary>
             YAML 配置扩展
@@ -205,6 +212,12 @@
             <summary>
              Yaml 配置源
             </summary>
+        </member>
+        <member name="M:LandWind.Blog.Core.LandWindBlogCoreModule.ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext)">
+            <summary>
+            ConfigureServices
+            </summary>
+            <param name="context"></param>
         </member>
         <member name="T:LandWind.Blog.Core.Options.AppOptions">
             <summary>
@@ -249,6 +262,11 @@
         <member name="P:LandWind.Blog.Core.Options.AppOptions.Authorize">
             <summary>
             Authorize
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Options.AppOptions.Ftqq">
+            <summary>
+            微信消息推送服务
             </summary>
         </member>
         <member name="P:LandWind.Blog.Core.Options.AuthorizeOptions.Github">

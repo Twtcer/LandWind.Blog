@@ -1,20 +1,18 @@
 ﻿using LandWind.Blog.Core.Extensions;
-using LandWind.Blog.Core.Response.Base;
-using log4net;
+using LandWind.Blog.Core.Response.Base; 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Serilog;
+using Serilog.Events;
 
 namespace LandWind.Blog.Api.Filters
 {
     public class LandWindBlogExceptionFilter : IExceptionFilter
-    {
-        private readonly ILog _log;
-
+    { 
         public LandWindBlogExceptionFilter()
-        {
-            _log = LogManager.GetLogger(typeof(LandWindBlogExceptionFilter));
-        }
+        { 
+        } 
 
         /// <summary>
         /// 异常处理
@@ -22,7 +20,7 @@ namespace LandWind.Blog.Api.Filters
         /// <param name="context"></param>
         public void OnException(ExceptionContext context)
         {
-            //_log.Error($"{context.HttpContext.Request.Path}|{context.Exception.Message}", context.Exception);
+            Log.Logger = new LoggerConfiguration().CreateLogger();
             if (context.Exception != null)
             {
                 var result = new ResponseResult();
@@ -35,6 +33,8 @@ namespace LandWind.Blog.Api.Filters
                 };
 
                 context.ExceptionHandled = true;
+
+                Log.Error(context.Exception, $"{context.HttpContext.Request.Path}|{context.Exception.Message}");
             }
         }
     }

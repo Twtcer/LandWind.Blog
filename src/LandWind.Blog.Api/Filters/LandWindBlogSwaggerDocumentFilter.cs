@@ -12,21 +12,19 @@ namespace LandWind.Blog.Api.Swagger.Filters
     {
         public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
         {
+            context.ApiDescriptions.Where(x => x.RelativePath.Contains("abp")).ToList()?.ForEach(x => swaggerDoc.Paths.Remove("/" + x.RelativePath));
+
             var tags = new List<OpenApiTag>
             {
-                new OpenApiTag{
-                    Name = "Blog",
-                    Description = "个人博客相关接口",
-                    ExternalDocs = new OpenApiExternalDocs{ Description = "包含:文章/标签/分类/友链"}
-                },
-                new OpenApiTag
-                {
-                    Name = "HelloWorld",
-                    Description = "通用公共接口",
-                    ExternalDocs = new OpenApiExternalDocs{ Description = "通用公共接口"}
-                }
+                new OpenApiTag { Name = "Authorize", Description = "<code>The authorize module.</code>" },
+                new OpenApiTag { Name = "Blog", Description = "<code>The blog module.</code>" },
+                new OpenApiTag { Name = "Tool", Description = "<code>The tool module.</code>" },
+                new OpenApiTag { Name = "Hot", Description = "<code>The hots module.</code>" },
+                new OpenApiTag { Name = "Message", Description = "<code>The message module.</code>" }, 
+                new OpenApiTag { Name = "Signature", Description = "<code>The signature module.</code>" },
+                new OpenApiTag { Name = "User", Description = "<code>The user module.</code>" }
             };
-            swaggerDoc.Tags = tags.OrderBy(a => a.Name).ToList();
+            swaggerDoc.Tags = tags;
         }
     }
 }
