@@ -1,16 +1,28 @@
 ﻿using System.Threading.Tasks;
-using LandWind.Blog.Core.Response.Base; 
-using LandWind.Blog.Core.Dto.Blog; 
+using LandWind.Blog.Core.Response.Base;
+using LandWind.Blog.Core.Dto.Blog;
+using System;
 
 namespace LandWind.Blog.Application.Blog
 {
-    public interface IBlogService<DtoT, QueryDto> where DtoT : class where QueryDto:class
+    #region IBlogService
+    public interface IBlogService<QueryDtoT, CreateInputT, UpdateInputT, DtoT> where DtoT : class
     {
+        /// <summary>
+        /// 分页查询 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<ResponseResult<PagedList<QueryDtoT>>> QueryAsync(PagingInput input);
+
         /// <summary>
         /// 分页查询
         /// </summary>
+        /// <param name="page"></param>
+        /// <param name="limit"></param>
+        /// <param name="func"></param>
         /// <returns></returns>
-        Task<ResponseResult<PagedList<QueryDto>>> QueryAsync(PagingInput input);
+        Task<ResponseResult<PagedList<QueryDtoT>>> QueryAsync(int page, int limit, Func<Task<ResponseResult<PagedList<QueryDtoT>>>> func);
 
         /// <summary>
         /// 获取单个模型
@@ -22,9 +34,9 @@ namespace LandWind.Blog.Application.Blog
         /// <summary>
         /// 添加
         /// </summary>
-        /// <param name="dto"></param>
+        /// <param name="input"></param>
         /// <returns></returns>
-        Task<ResponseResult<string>> InsertAsync(DtoT dto);
+        Task<ResponseResult> InsertAsync(CreateInputT input);
 
         /// <summary>
         /// 删除
@@ -39,12 +51,22 @@ namespace LandWind.Blog.Application.Blog
         /// <param name="id"></param>
         /// <param name="dto"></param>
         /// <returns></returns>
-        Task<ResponseResult<string>> UpdateAsync(int id, DtoT dto);  
+        Task<ResponseResult<string>> UpdateAsync(int id, UpdateInputT inputT);
     }
 
-    public interface IBlogPostService : IBlogService<PostDto, QueryPostDto>
+    /// <summary>
+    /// 报表接口
+    /// </summary>
+    public interface IStatisticsService
     {
+        Task<ResponseResult<Tuple<int, int, int>>> GetStatisticsAsync();
+    }
+    #endregion
 
+    #region IBlogObjectService 
+    public interface IBlogPostService : IBlogService<QueryPostDto, CreatePostInput, UpdatePostInput,PostDto>
+    {
+        Task<ResponseResult<PostDto>> GetByUrlAsync(string url);
     }
 
     //public partial interface IBlogCategorytService : IBlogService<CategoryDto, QueryCategoryDto>
@@ -62,8 +84,5 @@ namespace LandWind.Blog.Application.Blog
 
     //}
 
-    //public partial interface IBlogAdminService : IBlogService<AdminDto, QueryAdminDto>
-    //{
-
-    //}
+    #endregion
 }

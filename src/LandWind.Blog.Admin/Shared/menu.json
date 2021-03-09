@@ -1,0 +1,247 @@
+[
+  {
+    "Authority": null,
+    "Children": null,
+    "HideChildrenInMenu": false,
+    "HideInMenu": false,
+    "Icon": "dashboard",
+    "Locale": null,
+    "Name": "Dashboard",
+    "Key": "dashboard",
+    "Path": "/",
+    "ParentKeys": null
+  },
+  {
+    "Authority": null,
+    "Children": [
+      {
+        "Authority": null,
+        "Children": null,
+        "HideChildrenInMenu": false,
+        "HideInMenu": false,
+        "Icon": "bars",
+        "Locale": null,
+        "Name": "文章列表",
+        "Key": "posts-list",
+        "Path": "/posts/list",
+        "ParentKeys": null
+      },
+      {
+        "Authority": null,
+        "Children": null,
+        "HideChildrenInMenu": false,
+        "HideInMenu": false,
+        "Icon": "plus-square",
+        "Locale": null,
+        "Name": "新增文章",
+        "Key": "posts-add",
+        "Path": "/posts/add",
+        "ParentKeys": null
+      }
+    ],
+    "HideChildrenInMenu": false,
+    "HideInMenu": false,
+    "Icon": "read",
+    "Locale": null,
+    "Name": "文章管理",
+    "Key": "posts",
+    "Path": "/posts",
+    "ParentKeys": null
+  },
+  {
+    "Authority": null,
+    "Children": [
+      {
+        "Authority": null,
+        "Children": null,
+        "HideChildrenInMenu": false,
+        "HideInMenu": false,
+        "Icon": "bars",
+        "Locale": null,
+        "Name": "分类列表",
+        "Key": "categories-list",
+        "Path": "/categories/list",
+        "ParentKeys": null
+      },
+      {
+        "Authority": null,
+        "Children": null,
+        "HideChildrenInMenu": false,
+        "HideInMenu": false,
+        "Icon": "plus-square",
+        "Locale": null,
+        "Name": "新增分类",
+        "Key": "categories-add",
+        "Path": "/categories/add",
+        "ParentKeys": null
+      }
+    ],
+    "HideChildrenInMenu": false,
+    "HideInMenu": false,
+    "Icon": "switcher",
+    "Locale": null,
+    "Name": "分类管理",
+    "Key": "categories",
+    "Path": "/categories",
+    "ParentKeys": null
+  },
+  {
+    "Authority": null,
+    "Children": [
+      {
+        "Authority": null,
+        "Children": null,
+        "HideChildrenInMenu": false,
+        "HideInMenu": false,
+        "Icon": "bars",
+        "Locale": null,
+        "Name": "标签列表",
+        "Key": "tags-list",
+        "Path": "/tags/list",
+        "ParentKeys": null
+      },
+      {
+        "Authority": null,
+        "Children": null,
+        "HideChildrenInMenu": false,
+        "HideInMenu": false,
+        "Icon": "plus-square",
+        "Locale": null,
+        "Name": "新增标签",
+        "Key": "tags-add",
+        "Path": "/tags/add",
+        "ParentKeys": null
+      }
+    ],
+    "HideChildrenInMenu": false,
+    "HideInMenu": false,
+    "Icon": "tags",
+    "Locale": null,
+    "Name": "标签管理",
+    "Key": "tags",
+    "Path": "/tags",
+    "ParentKeys": null
+  },
+  {
+    "Authority": null,
+    "Children": [
+      {
+        "Authority": null,
+        "Children": null,
+        "HideChildrenInMenu": false,
+        "HideInMenu": false,
+        "Icon": "bars",
+        "Locale": null,
+        "Name": "友链列表",
+        "Key": "friendlinks-list",
+        "Path": "/friendlinks/list",
+        "ParentKeys": null
+      },
+      {
+        "Authority": null,
+        "Children": null,
+        "HideChildrenInMenu": false,
+        "HideInMenu": false,
+        "Icon": "plus-square",
+        "Locale": null,
+        "Name": "新增友链",
+        "Key": "friendlinks-add",
+        "Path": "/friendlinks/add",
+        "ParentKeys": null
+      }
+    ],
+    "HideChildrenInMenu": false,
+    "HideInMenu": false,
+    "Icon": "link",
+    "Locale": null,
+    "Name": "友链管理",
+    "Key": "friendlinks",
+    "Path": "/friendlinks",
+    "ParentKeys": null
+  },
+  {
+    "Authority": null,
+    "Children": null,
+    "HideChildrenInMenu": false,
+    "HideInMenu": false,
+    "Icon": "thunderbolt",
+    "Locale": null,
+    "Name": "个性签名",
+    "Key": "signatures",
+    "Path": "/signatures",
+    "ParentKeys": null
+  },
+  {
+    "Authority": null,
+    "Children": null,
+    "HideChildrenInMenu": false,
+    "HideInMenu": false,
+    "Icon": "user",
+    "Locale": null,
+    "Name": "用户中心",
+    "Key": "users",
+    "Path": "/users",
+    "ParentKeys": null
+  },
+  {
+    "Authority": null,
+    "Children": [
+      {
+        "Authority": null,
+        "Children": null,
+        "HideChildrenInMenu": false,
+        "HideInMenu": false,
+        "Icon": "cloud",
+        "Locale": null,
+        "Name": "CDN刷新",
+        "Key": "tools-cdn",
+        "Path": "/tools/cdn",
+        "ParentKeys": null
+      },
+      {
+        "Authority": null,
+        "Children": null,
+        "HideChildrenInMenu": false,
+        "HideInMenu": false,
+        "Icon": "node-index",
+        "Locale": null,
+        "Name": "IP查询",
+        "Key": "tools-ip",
+        "Path": "/tools/ip2region",
+        "ParentKeys": null
+      }
+    ],
+    "HideChildrenInMenu": false,
+    "HideInMenu": false,
+    "Icon": "tool",
+    "Locale": null,
+    "Name": "工具箱",
+    "Key": "tools",
+    "Path": "/tools",
+    "ParentKeys": null
+  },
+  {
+    "Authority": null,
+    "Children": null,
+    "HideChildrenInMenu": false,
+    "HideInMenu": false,
+    "Icon": "message",
+    "Locale": null,
+    "Name": "留言板",
+    "Key": "messages",
+    "Path": "/messages",
+    "ParentKeys": null
+  },
+  {
+    "Authority": null,
+    "Children": null,
+    "HideChildrenInMenu": false,
+    "HideInMenu": false,
+    "Icon": "smile",
+    "Locale": null,
+    "Name": "毒鸡汤",
+    "Key": "sayings",
+    "Path": "/sayings",
+    "ParentKeys": null
+  }
+]

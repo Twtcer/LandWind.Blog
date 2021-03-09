@@ -8,6 +8,8 @@ namespace LandWind.Blog.Core.Response.Base
     /// </summary>
     public class ResponseResult
     {
+        public static ResponseResult Instance = new ResponseResult();
+
         /// <summary>
         /// 响应代码
         /// </summary>
@@ -65,7 +67,9 @@ namespace LandWind.Blog.Core.Response.Base
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class ResponseResult<T> : ResponseResult where T : class
-    {
+    { 
+        public static ResponseResult<T> Instance = new ResponseResult<T>();
+
         /// <summary>
         /// 返回结果
         /// </summary>

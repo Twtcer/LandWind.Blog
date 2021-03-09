@@ -7,11 +7,11 @@ namespace LandWind.Blog.Core.Domain.Entities
         /// <summary>
         /// 标签名称
         /// </summary>
-        public string TagName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// 展示名称
         /// </summary>
-        public string DisplayName { get; set; }
+        public string Alias { get; set; }
     }
 }

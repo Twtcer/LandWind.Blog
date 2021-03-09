@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LandWind.Blog.Core.Dto.Blog
 {
-    class FriendLinkDto
+    public class FriendLinkDto
     {
+        public string Name { get; set; }
+
+        public string Url { get; set; }
     }
 }

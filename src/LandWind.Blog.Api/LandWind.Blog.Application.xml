@@ -82,34 +82,71 @@
             BlogService
             </summary>
         </member>
-        <member name="M:LandWind.Blog.Application.Blog.IBlogService`2.QueryAsync(LandWind.Blog.Core.Response.Base.PagingInput)">
+        <member name="M:LandWind.Blog.Application.Blog.StatisticsService.GetStatisticsAsync">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Blog.BlogPostService.InsertAsync(LandWind.Blog.Core.Dto.Blog.CreatePostInput)">
+            <summary>
+            Add post
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Blog.BlogPostService.DeleteAsync(System.Int32)">
+            <summary>
+            Delete post by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Blog.BlogPostService.GetAsync(System.Int32)">
+            <summary>
+            Get post by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`4.QueryAsync(LandWind.Blog.Core.Response.Base.PagingInput)">
+            <summary>
+            分页查询 
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`4.QueryAsync(System.Int32,System.Int32,System.Func{System.Threading.Tasks.Task{LandWind.Blog.Core.Response.Base.ResponseResult{LandWind.Blog.Core.Response.Base.PagedList{`0}}}})">
             <summary>
             分页查询
             </summary>
+            <param name="page"></param>
+            <param name="limit"></param>
+            <param name="func"></param>
             <returns></returns>
         </member>
-        <member name="M:LandWind.Blog.Application.Blog.IBlogService`2.GetAsync(System.Int32)">
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`4.GetAsync(System.Int32)">
             <summary>
             获取单个模型
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:LandWind.Blog.Application.Blog.IBlogService`2.InsertAsync(`0)">
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`4.InsertAsync(`1)">
             <summary>
             添加
             </summary>
-            <param name="dto"></param>
+            <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:LandWind.Blog.Application.Blog.IBlogService`2.DeleteAsync(System.Int32)">
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`4.DeleteAsync(System.Int32)">
             <summary>
             删除
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:LandWind.Blog.Application.Blog.IBlogService`2.UpdateAsync(System.Int32,`0)">
+        <member name="M:LandWind.Blog.Application.Blog.IBlogService`4.UpdateAsync(System.Int32,`2)">
             <summary>
             更新
             </summary>
@@ -117,11 +154,10 @@
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="T:LandWind.Blog.Application.Caching.BlogCacheService`1">
+        <member name="T:LandWind.Blog.Application.Blog.IStatisticsService">
             <summary>
-            博客缓存服务
+            报表接口
             </summary>
-            <typeparam name="QueryDto"></typeparam>
         </member>
         <member name="T:LandWind.Blog.Application.Caching.ApplicationCachingConsts.CacheKeys">
             <summary>
@@ -237,13 +273,65 @@
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:LandWind.Blog.Core.Caching.IBlogCacheService`1.QueryAsync(LandWind.Blog.Core.Response.Base.PagingInput,System.Func{System.Threading.Tasks.Task{LandWind.Blog.Core.Response.Base.ResponseResult{LandWind.Blog.Core.Response.Base.PagedList{`0}}}})">
+        <member name="M:LandWind.Blog.Core.Caching.IBlogCacheService`1.GetPageAsync(System.Int32,System.Int32,System.Func{System.Threading.Tasks.Task{LandWind.Blog.Core.Response.Base.ResponseResult{LandWind.Blog.Core.Response.Base.PagedList{`0}}}})">
             <summary>
-            分页查询
+            获取分页列表
             </summary>
-            <param name="input"></param>
-            <param name="factory"></param>
+            <param name="page"></param>
+            <param name="limit"></param>
+            <param name="func"></param>
             <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Caching.IBlogCacheService`1.GetListAsync(System.Func{System.Threading.Tasks.Task{LandWind.Blog.Core.Response.Base.ResponseResult{System.Collections.Generic.List{`0}}}})">
+            <summary>
+            获取列表
+            </summary>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LandWind.Blog.Core.Caching.IBlogPostCacheService">
+            <summary>
+            IBlogPostCacheService
+            </summary>
+        </member>
+        <member name="M:LandWind.Blog.Core.Caching.IBlogPostCacheService.GetPostByUrlAsync(System.String,System.Func{System.Threading.Tasks.Task{LandWind.Blog.Core.Response.Base.ResponseResult{LandWind.Blog.Core.Dto.Blog.PostDetailDto}}})">
+            <summary>
+            Get post by url from the cache.
+            </summary>
+            <param name="url"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Caching.IBlogPostCacheService.GetPostsByCategoryAsync(System.String,System.Func{System.Threading.Tasks.Task{LandWind.Blog.Core.Response.Base.ResponseResult{System.Collections.Generic.List{LandWind.Blog.Core.Dto.Blog.QueryPostDto}}}})">
+            <summary>
+            Get the list of posts by category from the cache.
+            </summary>
+            <param name="category"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Caching.IBlogPostCacheService.GetPostsByTagAsync(System.String,System.Func{System.Threading.Tasks.Task{LandWind.Blog.Core.Response.Base.ResponseResult{System.Collections.Generic.List{LandWind.Blog.Core.Dto.Blog.QueryPostDto}}}})">
+            <summary>
+            Get the list of posts by tag from the cache.
+            </summary>
+            <param name="tag"></param>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LandWind.Blog.Core.Caching.IBlogTagCacheService">
+            <summary>
+            IBlogTagCacheService
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Caching.IBlogCategoryCacheService">
+            <summary>
+            IBlogCategoryCacheService
+            </summary>  
+        </member>
+        <member name="T:LandWind.Blog.Core.Caching.IBlogFriendLinkCacheService">
+            <summary>
+            IBlogFriendLinkCacheService
+            </summary>
         </member>
         <member name="M:LandWind.Blog.Core.Caching.LandWindBlogApplicationCachingExtensions.GetOrAddAsync``1(Microsoft.Extensions.Caching.Distributed.IDistributedCache,System.String,System.Func{System.Threading.Tasks.Task{``0}},System.Int32)">
             <summary>

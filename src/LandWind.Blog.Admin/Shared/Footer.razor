@@ -1,5 +1,21 @@
-﻿<h3>Footer</h3>
+﻿<FooterView Copyright="@($"{DateTime.Now.Year} LandWind Blog⭐⭐⭐")" Links="Links" />
 
-@code {
-
+@code
+{
+    LinkItem[] Links { get; set; } =
+    {
+        new LinkItem
+        {
+            Key = "github",
+            Title = (RenderFragment)(@<Icon Type="github" />),
+            Href = "https://github.com/Twtcer/LandWind.Blog",
+            BlankTarget = true,
+        },
+        new LinkItem {
+            Key = "cnblog",
+            Title = (RenderFragment)(@<Icon Type="github" />),
+             Href = "https://www.cnblogs.com/landwind",
+            BlankTarget = true,
+        }
+    };
 }

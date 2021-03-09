@@ -21,12 +21,7 @@ namespace LandWind.Blog.Core.Domain.Entities
         /// <summary>
         /// 链接
         /// </summary>
-        public string Url { get; set; }
-
-        /// <summary>
-        /// HTML
-        /// </summary>
-        public string Html { get; set; }
+        public string Url { get; set; } 
 
         /// <summary>
         /// Markdown

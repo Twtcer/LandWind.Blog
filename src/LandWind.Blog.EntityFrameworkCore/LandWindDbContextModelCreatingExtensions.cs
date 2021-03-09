@@ -16,8 +16,7 @@ namespace LandWind.Blog.EntityFrameworkCore
                 p.HasKey(x => x.Id);
                 p.Property(x => x.Title).HasMaxLength(200).IsRequired();
                 p.Property(x => x.Author).HasMaxLength(10);
-                p.Property(x => x.Url).HasMaxLength(100).IsRequired();
-                p.Property(x => x.Html).IsRequired();
+                p.Property(x => x.Url).HasMaxLength(100).IsRequired(); 
                 p.Property(x => x.Markdown).IsRequired();
                 p.Property(x => x.CategoryId).HasColumnType("int");
                 p.Property(x => x.CreationTime).HasColumnType("datetime");
@@ -34,8 +33,8 @@ namespace LandWind.Blog.EntityFrameworkCore
             {
                 b.ToTable(LandWindBlogDbConsts.DbTablePrefix + DbTableName.Tags);
                 b.HasKey(x => x.Id);
-                b.Property(x => x.TagName).HasMaxLength(50).IsRequired();
-                b.Property(x => x.DisplayName).HasMaxLength(50).IsRequired();
+                b.Property(x => x.Name).HasMaxLength(50).IsRequired();
+                b.Property(x => x.Alias).HasMaxLength(50).IsRequired();
             });
 
             builder.Entity<PostTag>(b =>

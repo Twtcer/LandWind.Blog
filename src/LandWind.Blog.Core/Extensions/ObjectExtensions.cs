@@ -12,8 +12,12 @@ using Newtonsoft.Json.Serialization;
 
 namespace LandWind.Blog.Core.Extensions
 {
+    /// <summary>
+    /// Object Extensions
+    /// </summary>
     public static class ObjectExtensions
     {
+        #region Comm
         /// <summary>
         /// 序列号json
         /// </summary>
@@ -60,8 +64,8 @@ namespace LandWind.Blog.Core.Extensions
         /// </summary>
         /// <param name="dict"></param>
         /// <returns></returns>
-        public static string ToQueryString(this Dictionary<string, string> dict,Encoding encoding)
-        { 
+        public static string ToQueryString(this Dictionary<string, string> dict, Encoding encoding)
+        {
             return dict.Select(x => $"{HttpUtility.UrlEncode(x.Key, encoding)}={HttpUtility.UrlEncode(x.Value, encoding)}").JoinAsString("&");
         }
 
@@ -109,6 +113,7 @@ namespace LandWind.Blog.Core.Extensions
 
             if (string.IsNullOrEmpty(key)) return JsonConvert.DeserializeObject<T>(json);
 
+      
             return JsonConvert.DeserializeObject<object>(json) is not JObject obj ? new T() : JsonConvert.DeserializeObject<T>(obj[key].ToString());
         }
 
@@ -123,6 +128,19 @@ namespace LandWind.Blog.Core.Extensions
 
             return regex.IsMatch(ip);
         }
+        #endregion 
 
+        #region Blog
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="time"></param>
+        /// <returns></returns>  
+        public static string GeneratePostUrl(this string url, DateTime time)
+        {
+            return $"{time:yyyy-MM-dd}-{url}";
+        }
+        #endregion
     }
 }

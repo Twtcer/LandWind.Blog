@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace LandWind.Blog.Core.Dto.Blog
 {
-    class TagDto
+    public class TagDto
     {
+        public string Name { get; set; }
+
+        public string Alias { get; set; }
     }
+
+    public class GetTagDto : TagDto
+    {
+        public int Total { get; set; }
+    }
+
 }

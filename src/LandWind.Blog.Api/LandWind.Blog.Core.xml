@@ -49,11 +49,6 @@
             链接
             </summary>
         </member>
-        <member name="P:LandWind.Blog.Core.Domain.Entities.Post.Html">
-            <summary>
-            HTML
-            </summary>
-        </member>
         <member name="P:LandWind.Blog.Core.Domain.Entities.Post.Markdown">
             <summary>
             Markdown
@@ -79,12 +74,12 @@
             标签Id
             </summary>
         </member>
-        <member name="P:LandWind.Blog.Core.Domain.Entities.Tag.TagName">
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Tag.Name">
             <summary>
             标签名称
             </summary>
         </member>
-        <member name="P:LandWind.Blog.Core.Domain.Entities.Tag.DisplayName">
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Tag.Alias">
             <summary>
             展示名称
             </summary>
@@ -104,6 +99,11 @@
             User
             </summary>
         </member>
+        <member name="T:LandWind.Blog.Core.Dto.Blog.PostDto">
+            <summary>
+            PostDto
+            </summary>
+        </member>
         <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Title">
             <summary>
             标题
@@ -117,11 +117,6 @@
         <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Url">
             <summary>
             链接
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Html">
-            <summary>
-            HTML
             </summary>
         </member>
         <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Markdown">
@@ -139,9 +134,29 @@
             创建时间
             </summary>
         </member>
+        <member name="T:LandWind.Blog.Core.Dto.Blog.CreatePostInput">
+            <summary>
+            CreatePostInput
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Dto.Blog.UpdatePostInput">
+            <summary>
+            UpdatePostInput
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Dto.Blog.QueryPostDto">
+            <summary>
+             QueryPostDto
+            </summary>
+        </member>
         <member name="T:LandWind.Blog.Core.Dto.Blog.PostBriefDto">
             <summary>
             文章模型
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Extensions.ObjectExtensions">
+            <summary>
+            Object Extensions
             </summary>
         </member>
         <member name="M:LandWind.Blog.Core.Extensions.ObjectExtensions.SerializeToJson(System.Object)">
@@ -202,6 +217,14 @@
             </summary>
             <param name="ip"></param>
             <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Extensions.ObjectExtensions.GeneratePostUrl(System.String,System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="time"></param>
+            <returns></returns>  
         </member>
         <member name="T:LandWind.Blog.Core.Extensions.YamlConfigurationExtensions">
             <summary>
