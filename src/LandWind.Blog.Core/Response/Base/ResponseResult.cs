@@ -8,8 +8,11 @@ namespace LandWind.Blog.Core.Response.Base
     /// </summary>
     public class ResponseResult
     {
-        public static ResponseResult Instance = new ResponseResult();
-
+        public static ResponseResult Instance = new ResponseResult(); 
+        public ResponseResult()
+        {
+            
+        }
         /// <summary>
         /// 响应代码
         /// </summary>
@@ -70,6 +73,15 @@ namespace LandWind.Blog.Core.Response.Base
     { 
         public static ResponseResult<T> Instance = new ResponseResult<T>();
 
+        public ResponseResult()
+        {
+
+        }
+        public ResponseResult(T t)
+        {
+            Result = t;
+        }
+
         /// <summary>
         /// 返回结果
         /// </summary>
@@ -85,6 +97,7 @@ namespace LandWind.Blog.Core.Response.Base
             Message = message;
             Code = ResponseResultCode.Succeed;
             Result = result;
-        }
+        }   
+
     }
 }

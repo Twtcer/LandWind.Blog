@@ -13,9 +13,19 @@ namespace LandWind.Blog.Core.Dto.Blog
         public string Alias { get; set; }
     }
 
-    public class GetTagDto : TagDto
+    public class QueryTagDto : TagDto
     {
         public int Total { get; set; }
+    }
+
+    public class CreateTagInput: TagDto
+    {
+
+    }
+
+    public class UpdateTagInput : CreateTagInput
+    {
+
     }
 
 }

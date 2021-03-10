@@ -58,7 +58,7 @@ namespace LandWind.Blog.Core.Caching
     /// <summary>
     /// IBlogTagCacheService
     /// </summary>
-    public interface IBlogTagCacheService:IBlogCacheService<GetTagDto>
+    public interface IBlogTagCacheService:IBlogCacheService<QueryTagDto>
     {
 
     }
@@ -66,7 +66,7 @@ namespace LandWind.Blog.Core.Caching
     /// <summary>
     /// IBlogCategoryCacheService
     /// </summary>  
-    public interface IBlogCategoryCacheService : IBlogCacheService<GetCategoryDto>
+    public interface IBlogCategoryCacheService : IBlogCacheService<QueryCategoryDto>
     {
 
     }
@@ -74,7 +74,7 @@ namespace LandWind.Blog.Core.Caching
     /// <summary>
     /// IBlogFriendLinkCacheService
     /// </summary>
-    public interface IBlogFriendLinkCacheService : IBlogCacheService<FriendLinkDto>
+    public interface IBlogFriendLinkCacheService : IBlogCacheService<QueryFriendLinkDto>
     {
 
     }

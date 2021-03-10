@@ -12,4 +12,19 @@ namespace LandWind.Blog.Core.Dto.Blog
 
         public string Url { get; set; }
     }
+
+    public class QueryFriendLinkDto : TagDto
+    {
+        public int Total { get; set; }
+    }
+
+    public class CreateFriendLinknput : FriendLinkDto
+    {
+
+    }
+
+    public class UpdateFriendLinkInput : CreateFriendLinknput
+    {
+
+    }
 }

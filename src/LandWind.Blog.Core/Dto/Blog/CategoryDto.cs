@@ -13,8 +13,17 @@ namespace LandWind.Blog.Core.Dto.Blog
         public string Alias { get; set; }
     }
 
-    public class GetCategoryDto : CategoryDto
+    public class QueryCategoryDto : CategoryDto
     {
         public int Total { get; set; }
+    }
+
+    public class CreateCategoryInput: CategoryDto
+    { 
+        
+    } 
+
+    public class UpdateCategoryInput : CreateCategoryInput
+    {
     }
 }

@@ -25,16 +25,18 @@ namespace LandWind.Blog.Application.Caching
         /// CacheKeys
         /// </summary>
         public class CacheKeys
-        {
-            public static string GetPostByUrl(string url) => $"{CachePrefix.BlogPost}:GetByUrl-{url}";
+        {  
+            public static string GetPostsList() => $"{CachePrefix.BlogPost}:GetList";
 
-            public static string GetPosts(int page, int limit) => $"{CachePrefix.BlogPost}:Get-{page}-{limit}";
+            public static string GetPosts(int page, int limit) => $"{CachePrefix.BlogPost}:GetPage-{page}-{limit}";
 
-            public static string GetPostsByCategory(string category) => $"{CachePrefix.BlogPost}:GetByCategory-{category}";
+            public static string GetPostByUrl(string url) => $"{CachePrefix.BlogPost}:Get-{url}";
 
-            public static string GetPostsByTag(string tag) => $"{CachePrefix.BlogPost}:GetByTag-{tag}";
+            public static string GetPostsByCategory(string category) => $"{CachePrefix.BlogPost}:Get-{category}";
 
-            public static string GetCategories() => $"{CachePrefix.BlogCategory}:Get";
+            public static string GetPostsByTag(string tag) => $"{CachePrefix.BlogPost}:Get-{tag}";
+
+            public static string GetCategories() => $"{CachePrefix.BlogCategory}:Gets";
 
             public static string GetTags() => $"{CachePrefix.BlogTag}:Get";
 

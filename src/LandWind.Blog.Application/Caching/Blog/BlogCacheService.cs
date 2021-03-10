@@ -7,76 +7,107 @@ using LandWind.Blog.Core.Response.Base;
 
 namespace LandWind.Blog.Application.Caching
 {
-    public partial class BlogCacheService : CachingServiceBase
+    /// <summary>
+    /// 
+    /// </summary>
+    public partial class BlogCacheService<DtoT> : CachingServiceBase, IBlogCacheService<DtoT>
     {
-        private static readonly string QueryDtosKey = "Blog:{0}:Query{0}s-{1}-{2}";
-    }
+        private static readonly Dictionary<Type, string> CacheKeyDict = new Dictionary<Type, string> {
+            { typeof(QueryPostDto),ApplicationCachingConsts.CacheKeys.GetPostsList()},
+            { typeof(QueryTagDto),ApplicationCachingConsts.CacheKeys.GetTags()},
+            { typeof(QueryCategoryDto),ApplicationCachingConsts.CacheKeys.GetCategories()},
+            { typeof(QueryFriendLinkDto),ApplicationCachingConsts.CacheKeys.GetFriendLinks()}
+        }; 
+        protected static int cacheStrategy = ApplicationCachingConsts.CacheStrategy.HalfDay;
 
-    //TODO:完善Blog Cache 服务
-    public class BlogPostCacheService : BlogCacheService, IBlogPostCacheService
-    {
-        public Task<ResponseResult<List<QueryPostDto>>> GetListAsync(Func<Task<ResponseResult<List<QueryPostDto>>>> func)
+        /// <summary>
+        /// 获取列表
+        /// </summary>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public async Task<ResponseResult<List<DtoT>>> GetListAsync(Func<Task<ResponseResult<List<DtoT>>>> func)
         {
-            throw new NotImplementedException();
+            var key = CacheKeyDict[typeof(DtoT)];  
+            return await Cache.GetOrAddAsync(key, func, cacheStrategy);
         }
 
-        public Task<ResponseResult<PagedList<QueryPostDto>>> GetPageAsync(int page, int limit, Func<Task<ResponseResult<PagedList<QueryPostDto>>>> func)
+        /// <summary>
+        /// 获取分页数据
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="limit"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public async Task<ResponseResult<PagedList<DtoT>>> GetPageAsync(int page, int limit, Func<Task<ResponseResult<PagedList<DtoT>>>> func)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<ResponseResult<PostDetailDto>> GetPostByUrlAsync(string url, Func<Task<ResponseResult<PostDetailDto>>> func)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ResponseResult<List<QueryPostDto>>> GetPostsByCategoryAsync(string category, Func<Task<ResponseResult<List<QueryPostDto>>>> func)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ResponseResult<List<QueryPostDto>>> GetPostsByTagAsync(string tag, Func<Task<ResponseResult<List<QueryPostDto>>>> func)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class BlogTagCacheService : CachingServiceBase, IBlogTagCacheService
-    {
-        public async Task<ResponseResult<List<GetTagDto>>> GetListAsync(Func<Task<ResponseResult<List<GetTagDto>>>> func)
-        {
-            return await Cache.GetOrAddAsync(ApplicationCachingConsts.CacheKeys.GetTags(), func, ApplicationCachingConsts.CacheStrategy.HalfDay);
-        }
-
-        public Task<ResponseResult<PagedList<GetTagDto>>> GetPageAsync(int page, int limit, Func<Task<ResponseResult<PagedList<GetTagDto>>>> func)
-        {
-            throw new NotImplementedException();
+            var key = CacheKeyDict[typeof(DtoT)];
+            if (typeof(DtoT) == typeof(QueryPostDto))
+            {
+                key = ApplicationCachingConsts.CacheKeys.GetPosts(page, limit);
+            }
+            return await Cache.GetOrAddAsync(key, func, cacheStrategy);
         }
     }
 
-    public class BlogCategoryService : CachingServiceBase, IBlogCategoryCacheService
+    /// <summary>
+    /// Blog post cache
+    /// </summary>
+    public class BlogPostCacheService : BlogCacheService<QueryPostDto>, IBlogPostCacheService
     {
-        public Task<ResponseResult<List<GetCategoryDto>>> GetListAsync(Func<Task<ResponseResult<List<GetCategoryDto>>>> func)
+        /// <summary>
+        /// Get posts by url
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public async Task<ResponseResult<PostDetailDto>> GetPostByUrlAsync(string url, Func<Task<ResponseResult<PostDetailDto>>> func)
         {
-            throw new NotImplementedException();
+            return await Cache.GetOrAddAsync(ApplicationCachingConsts.CacheKeys.GetPostByUrl(url), func, cacheStrategy);
         }
 
-        public Task<ResponseResult<PagedList<GetCategoryDto>>> GetPageAsync(int page, int limit, Func<Task<ResponseResult<PagedList<GetCategoryDto>>>> func)
+        /// <summary>
+        /// Get posts by category
+        /// </summary>
+        /// <param name="category"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public async Task<ResponseResult<List<QueryPostDto>>> GetPostsByCategoryAsync(string category, Func<Task<ResponseResult<List<QueryPostDto>>>> func)
         {
-            throw new NotImplementedException();
+            return await Cache.GetOrAddAsync(ApplicationCachingConsts.CacheKeys.GetPostsByCategory(category), func, cacheStrategy);
+        }
+
+        /// <summary>
+        /// Get posts by tag
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public async Task<ResponseResult<List<QueryPostDto>>> GetPostsByTagAsync(string tag, Func<Task<ResponseResult<List<QueryPostDto>>>> func)
+        {
+            return await Cache.GetOrAddAsync(ApplicationCachingConsts.CacheKeys.GetPostsByTag(tag), func, cacheStrategy);
         }
     }
 
-    public class BlogFriendLinkService : CachingServiceBase, IBlogFriendLinkCacheService
+    /// <summary>
+    /// Blog tag cache
+    /// </summary>
+    public class BlogTagCacheService : BlogCacheService<QueryTagDto>, IBlogTagCacheService
     {
-        public Task<ResponseResult<List<FriendLinkDto>>> GetListAsync(Func<Task<ResponseResult<List<FriendLinkDto>>>> func)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<ResponseResult<PagedList<FriendLinkDto>>> GetPageAsync(int page, int limit, Func<Task<ResponseResult<PagedList<FriendLinkDto>>>> func)
-        {
-            throw new NotImplementedException();
-        }
+    }
+
+    /// <summary>
+    /// Blog category cache
+    /// </summary>
+    public class BlogCategoryService : BlogCacheService<QueryCategoryDto>, IBlogCategoryCacheService
+    {
+    }
+
+    /// <summary>
+    /// Blog FriendLink cache
+    /// </summary>
+    public class BlogFriendLinkService : BlogCacheService<QueryFriendLinkDto>, IBlogFriendLinkCacheService
+    {
+
     }
 }
