@@ -4,7 +4,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace LandWind.Blog.Core.Domain.Repositories
 {
-    public interface IHotNewsRepository : IRepository<HotNews, Guid>, IBulkInsert<HotNews>
+    public interface IHotNewsRepository : IRepositoryBase<HotNews, Guid>, IBulkInsert<HotNews>
     {
     }
 }

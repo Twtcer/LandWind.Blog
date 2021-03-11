@@ -4,14 +4,426 @@
         <name>LandWind.Blog.Core</name>
     </assembly>
     <members>
-        <member name="P:LandWind.Blog.Core.Domain.Entities.Category.CategoryName">
+        <member name="T:LandWind.Blog.Core.Dto.Blog.PostDto">
+            <summary>
+            PostDto
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Author">
+            <summary>
+            作者
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Url">
+            <summary>
+            链接
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Markdown">
+            <summary>
+            Markdown
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.CategoryId">
+            <summary>
+            分类Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Dto.Blog.CreatePostInput">
+            <summary>
+            CreatePostInput
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Dto.Blog.UpdatePostInput">
+            <summary>
+            UpdatePostInput
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Dto.Blog.QueryPostDto">
+            <summary>
+             QueryPostDto
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Dto.Blog.PostBriefDto">
+            <summary>
+            文章模型
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Dto.Blog.PostDetailDto">
+            <summary>
+            文章详情
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.EntityBase.IEntity">
+            <summary>
+            实体接口
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.EntityBase.Entity`1">
+            <summary>
+            Entity TKey
+            </summary>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.Entity`1.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.EntityBase.Entity">
+            <summary>
+            Entity,Key=int
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.EntityBase.IEntityAdd`1">
+            <summary>
+            IEntityAdd
+            </summary>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.IEntityAdd`1.CreatorId">
+            <summary>
+            创建者Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.IEntityAdd`1.CreatorName">
+            <summary>
+            创建者
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.IEntityAdd`1.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.EntityBase.EntityAdd`1">
+            <summary>
+            EntityAdd
+            </summary>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityAdd`1.CreatorId">
+            <summary>
+            创建者Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityAdd`1.CreatorName">
+            <summary>
+            创建者
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityAdd`1.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.EntityBase.EntityAdd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.EntityBase.EntityBase`1">
+            <summary>
+            EntityBase
+            </summary>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityBase`1.Version">
+            <summary>
+            版本
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityBase`1.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityBase`1.CreatorId">
+            <summary>
+            创建者Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityBase`1.CreatorName">
+            <summary>
+            创建者
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityBase`1.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityBase`1.ModifiedUserId">
+            <summary>
+            修改者Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityBase`1.ModifiedUserName">
+            <summary>
+            修改者
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityBase`1.ModifiedTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.EntityBase.IEntitySoftDelete">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.IEntitySoftDelete.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntitySoftDelete`1.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.EntityBase.IEntityUpdate`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="T:LandWind.Blog.Core.EntityBase.EntityUpdate`1">
+            <summary>
+            实体修改审计
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityUpdate`1.ModifiedUserId">
+            <summary>
+            修改者Id
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityUpdate`1.ModifiedUserName">
+            <summary>
+            修改者
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityUpdate`1.ModifiedTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.IEntityVersion.Version">
+            <summary>
+            版本
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.EntityBase.EntityVersion`1.Version">
+            <summary>
+            版本
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.DataAnnotation.Input.PageInput`1">
+            <summary>
+            PageInput
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Input.PageInput`1.CurrentPage">
+            <summary>
+             当前页
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Input.PageInput`1.PageSize">
+            <summary>
+            分页大小
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Input.PageInput`1.Filter">
+            <summary>
+            筛选-查询条件
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Input.PageInput`1.DynamicFilter">
+            <summary>
+            高级查询条件
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.DataAnnotation.Output.IResponseOutput">
+            <summary>
+            IResponseOutput
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.IResponseOutput.Success">
+            <summary>
+            Success
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.IResponseOutput.Msg">
+            <summary>
+            Msg
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.DataAnnotation.Output.IResponseOutput`1">
+            <summary>
+            IResponseOutput
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.IResponseOutput`1.Data">
+            <summary>
+            返回数据
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.DataAnnotation.Output.OptionOutput">
+            <summary>
+            OptionOutput
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.OptionOutput.Label">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.OptionOutput.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.OptionOutput.Disabled">
+            <summary>
+            禁用
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.OptionOutput.Data">
+            <summary>
+            额外数据
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.DataAnnotation.Output.PageOutput`1">
+            <summary>
+            PageOutput
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.PageOutput`1.Total">
+            <summary>
+            Total
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.PageOutput`1.List">
+            <summary>
+            List
+            </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput`1">
+            <summary>
+            ResponseOutput
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput`1.Success">
+            <summary>
+            响应是否成功
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput`1.Code">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput`1.Msg">
+            <summary>
+            响应消息
+            </summary>
+        </member>
+        <member name="P:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput`1.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput`1.NotOk(System.String,`0)">
+            <summary>
+            失败
+            </summary>
+            <param name="msg">消息</param>
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput">
+            <summary>
+            响应数据静态输出
+            </summary>
+        </member>
+        <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput.Ok``1(``0,System.String)">
+            <summary>
+            成功
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput.Ok">
+            <summary>
+            成功
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput.NotOk``1(System.String,``0)">
+            <summary>
+            失败输出
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="msg"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput.NotOk(System.String)">
+            <summary>
+            失败
+            </summary> 
+            <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput.Result``1(System.Boolean)">
+            <summary>
+            泛型根据success返回结果
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="success"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput.Result(System.Boolean)">
+            <summary>
+            根据success返回结果
+            </summary>
+            <param name="success"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput.PageResult``1(System.Collections.Generic.List{``0},System.Int64)">
+            <summary>
+            返回分页数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <param name="total"></param>
+            <returns></returns>
+        </member>
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Category.Name">
             <summary>
             分类名称
             </summary>
         </member>
-        <member name="P:LandWind.Blog.Core.Domain.Entities.Category.DisplayName">
+        <member name="P:LandWind.Blog.Core.Domain.Entities.Category.Alias">
             <summary>
-            展示名称
+            别名
             </summary>
         </member>
         <member name="P:LandWind.Blog.Core.Domain.Entities.FriendLink.Title">
@@ -84,10 +496,103 @@
             展示名称
             </summary>
         </member>
+        <member name="M:LandWind.Blog.Core.Domain.Repositories.IPostRepository.GetPagedListAsync(System.Int32,System.Int32)">
+            <summary>
+            Get post list by paging.
+            </summary>
+            <param name="skipCount"></param>
+            <param name="maxResultCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Domain.Repositories.IPostRepository.GetListByCategoryAsync(System.String)">
+            <summary>
+            Get post list by category.
+            </summary>
+            <param name="category"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Domain.Repositories.IPostRepository.GetListByTagAsync(System.String)">
+            <summary>
+            Get post list by tag.
+            </summary>
+            <param name="tag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Domain.Repositories.IPostRepository.GetCountByCategoryAsync(System.Int32)">
+            <summary>
+            Get post count by category id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Domain.Repositories.IPostRepository.GetCountByTagAsync(System.Int32)">
+            <summary>
+            Get post count by tag id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Domain.Repositories.ITagRepository.GetListAsync(System.Collections.Generic.List{System.String})">
+            <summary>
+            Get tag list by names
+            </summary>
+            <param name="names"></param>
+            <returns></returns>
+        </member>
         <member name="T:LandWind.Blog.Core.Domain.IBulkInsert`1">
             <summary>
             批量插入接口
             </summary>
+        </member>
+        <member name="T:LandWind.Blog.Core.Domain.IRepositoryBase`1">
+             <summary>
+            默认接口，Key=int
+             </summary>
+             <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="T:LandWind.Blog.Core.Domain.IRepositoryBase`2">
+            <summary>
+            仓储接口
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TKey"></typeparam>
+        </member>
+        <member name="M:LandWind.Blog.Core.Domain.IRepositoryBase`2.GetAsync``1(`1)">
+            <summary>
+            获取对象Dto
+            </summary>
+            <typeparam name="TDto"></typeparam>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Domain.IRepositoryBase`2.GetAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            根据条件获取对象实体Dto
+            </summary>
+            <typeparam name="TDto"></typeparam>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Domain.IRepositoryBase`2.GetAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            根据条件获取实体
+            </summary>
+            <param name="exp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Domain.IRepositoryBase`2.DeleteAsync(`1)">
+            <summary>
+            删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Domain.IRepositoryBase`2.BatchDeleteAsync(`1[])">
+            <summary>
+            批量删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="T:LandWind.Blog.Core.Domain.Users.Repositories.IUserRepository">
             <summary>
@@ -99,60 +604,12 @@
             User
             </summary>
         </member>
-        <member name="T:LandWind.Blog.Core.Dto.Blog.PostDto">
+        <member name="M:LandWind.Blog.Core.Extensions.EnumExtensions.ToDescription(System.Enum)">
             <summary>
-            PostDto
+            获取枚举描述
             </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Title">
-            <summary>
-            标题
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Author">
-            <summary>
-            作者
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Url">
-            <summary>
-            链接
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.Markdown">
-            <summary>
-            Markdown
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.CategoryId">
-            <summary>
-            分类Id
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Dto.Blog.PostDto.CreationTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="T:LandWind.Blog.Core.Dto.Blog.CreatePostInput">
-            <summary>
-            CreatePostInput
-            </summary>
-        </member>
-        <member name="T:LandWind.Blog.Core.Dto.Blog.UpdatePostInput">
-            <summary>
-            UpdatePostInput
-            </summary>
-        </member>
-        <member name="T:LandWind.Blog.Core.Dto.Blog.QueryPostDto">
-            <summary>
-             QueryPostDto
-            </summary>
-        </member>
-        <member name="T:LandWind.Blog.Core.Dto.Blog.PostBriefDto">
-            <summary>
-            文章模型
-            </summary>
+            <param name="item"></param>
+            <returns></returns>
         </member>
         <member name="T:LandWind.Blog.Core.Extensions.ObjectExtensions">
             <summary>
@@ -225,6 +682,31 @@
             <param name="url"></param>
             <param name="time"></param>
             <returns></returns>  
+        </member>
+        <member name="T:LandWind.Blog.Core.Extensions.DateTimeExtensions">
+            <summary>
+            DataTime 扩展方法
+            </summary>
+        </member>
+        <member name="F:LandWind.Blog.Core.Extensions.DateTimeExtensions.TimestampStart">
+            <summary>
+            时间戳起始日期
+            </summary>
+        </member>
+        <member name="M:LandWind.Blog.Core.Extensions.DateTimeExtensions.ToTimestamp(System.DateTime,System.Boolean)">
+            <summary>
+            转换为时间戳
+            </summary>
+            <param name="dateTime"></param>
+            <param name="milliseconds">是否使用毫秒</param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.Extensions.DateTimeExtensions.GetWeekName(System.DateTime)">
+            <summary>
+            获取周几
+            </summary>
+            <param name="datetime"></param>
+            <returns></returns>
         </member>
         <member name="T:LandWind.Blog.Core.Extensions.YamlConfigurationExtensions">
             <summary>
@@ -400,102 +882,6 @@
         <member name="P:LandWind.Blog.Core.Options.WorkerOptions.Cron">
             <summary>
             The cron expression to base the schedule on
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Response.Base.PagedList`1.Total">
-            <summary>
-            总数
-            </summary>
-        </member>
-        <member name="T:LandWind.Blog.Core.Response.Base.PagingInput">
-            <summary>
-            分页参数
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Response.Base.PagingInput.Page">
-            <summary>
-            页码
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Response.Base.PagingInput.Limit">
-            <summary>
-            单页数量
-            </summary>
-        </member>
-        <member name="T:LandWind.Blog.Core.Response.Base.ResponseResult">
-            <summary>
-            接口响应
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Response.Base.ResponseResult.Code">
-            <summary>
-            响应代码
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Response.Base.ResponseResult.Message">
-            <summary>
-            消息
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Response.Base.ResponseResult.Success">
-            <summary>
-            成功
-            </summary>
-        </member>
-        <member name="P:LandWind.Blog.Core.Response.Base.ResponseResult.Timestamp">
-            <summary>
-            时间戳
-            </summary>
-        </member>
-        <member name="M:LandWind.Blog.Core.Response.Base.ResponseResult.IsSuccess(System.String)">
-            <summary>
-            响应成功 
-            </summary>
-            <param name="message"></param>
-        </member>
-        <member name="M:LandWind.Blog.Core.Response.Base.ResponseResult.IsFailed(System.String)">
-            <summary>
-            响应失败
-            </summary>
-            <param name="message"></param>
-        </member>
-        <member name="M:LandWind.Blog.Core.Response.Base.ResponseResult.IsFailed(System.Exception)">
-            <summary>
-            响应失败
-            </summary>
-            <param name="exception"></param>
-        </member>
-        <member name="T:LandWind.Blog.Core.Response.Base.ResponseResult`1">
-            <summary>
-            泛型接口响应
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="P:LandWind.Blog.Core.Response.Base.ResponseResult`1.Result">
-            <summary>
-            返回结果
-            </summary>
-        </member>
-        <member name="M:LandWind.Blog.Core.Response.Base.ResponseResult`1.IsSuccessed(`0,System.String)">
-            <summary>
-            响应成功
-            </summary>
-            <param name="result"></param>
-            <param name="message"></param>
-        </member>
-        <member name="T:LandWind.Blog.Core.Response.Enum.ResponseResultCode">
-            <summary>
-            接口响应代码
-            </summary>
-        </member>
-        <member name="F:LandWind.Blog.Core.Response.Enum.ResponseResultCode.Succeed">
-            <summary>
-            成功
-            </summary>
-        </member>
-        <member name="F:LandWind.Blog.Core.Response.Enum.ResponseResultCode.Failed">
-            <summary>
-            失败
             </summary>
         </member>
         <member name="P:LandWind.Blog.Application.Contracts.Jobs.HotNewsJobItem`1.Result">

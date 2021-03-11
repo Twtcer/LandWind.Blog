@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandWind.Blog.BackgroundWor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandWind.Blog.DbMigrator", "src\LandWind.Blog.DbMigrator\LandWind.Blog.DbMigrator.csproj", "{8704EDDE-26CB-4303-ABFE-FAB61D5A2BC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandWind.Blog.Admin", "src\LandWind.Blog.Admin\LandWind.Blog.Admin.csproj", "{DFCC5F7E-2759-457D-941D-5D5A368635F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandWind.Blog.Admin", "src\LandWind.Blog.Admin\LandWind.Blog.Admin.csproj", "{DFCC5F7E-2759-457D-941D-5D5A368635F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandWind.Blog.FreeSql", "src\LandWind.Blog.FreeSql\LandWind.Blog.FreeSql.csproj", "{18089EF3-370B-4075-AFBF-58299661B9D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{DFCC5F7E-2759-457D-941D-5D5A368635F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFCC5F7E-2759-457D-941D-5D5A368635F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFCC5F7E-2759-457D-941D-5D5A368635F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18089EF3-370B-4075-AFBF-58299661B9D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18089EF3-370B-4075-AFBF-58299661B9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18089EF3-370B-4075-AFBF-58299661B9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18089EF3-370B-4075-AFBF-58299661B9D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +99,7 @@ Global
 		{1F58F115-8CD5-48CF-86A0-E30392741CC8} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{8704EDDE-26CB-4303-ABFE-FAB61D5A2BC2} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{DFCC5F7E-2759-457D-941D-5D5A368635F9} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{18089EF3-370B-4075-AFBF-58299661B9D8} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

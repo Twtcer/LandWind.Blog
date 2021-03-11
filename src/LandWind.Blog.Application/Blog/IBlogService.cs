@@ -3,18 +3,20 @@ using LandWind.Blog.Core.Response.Base;
 using LandWind.Blog.Core.Dto.Blog;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LandWind.Blog.Application.Blog
 {
     #region IBlogService
     public interface IBlogService<QueryDtoT, CreateInputT, UpdateInputT, DtoT> where DtoT : class
-    {
+    { 
         /// <summary>
-        /// 分页查询 
+        /// 分页查询
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="page"></param>
+        /// <param name="limit"></param>
         /// <returns></returns>
-        Task<ResponseResult<PagedList<QueryDtoT>>> QueryAsync(PagingInput input);
+        Task<ResponseResult<PagedList<QueryDtoT>>> QueryAsync([Range(1, 100)] int page=1, [Range(1, 100)] int limit=10);
 
         /// <summary>
         /// 查询列表
@@ -64,7 +66,9 @@ namespace LandWind.Blog.Application.Blog
     #region IBlogObjectService 
     public interface IBlogPostService : IBlogService<QueryPostDto, CreatePostInput, UpdatePostInput, PostDto>
     {
-        Task<ResponseResult<PostDto>> GetByUrlAsync(string url);
+        Task<ResponseResult<PostDetailDto>> GetByUrlAsync(string url);  
+        Task<ResponseResult<List<QueryPostDto>>> GetPostsByCategoryAsync(string category); 
+        Task<ResponseResult<List<QueryPostDto>>> GetPostsByTagAsync(string tag);
     }
 
     public interface IBlogCategoryService : IBlogService<QueryCategoryDto, CreateCategoryInput, UpdateCategoryInput, CategoryDto>

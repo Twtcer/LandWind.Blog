@@ -6,12 +6,12 @@ namespace LandWind.Blog.Core.Domain.Entities
         /// <summary>
         /// 分类名称
         /// </summary>
-        public string CategoryName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// 展示名称
+        /// 别名
         /// </summary>
-        public string DisplayName { get; set; }
+        public string Alias { get; set; }
     }
 }
  

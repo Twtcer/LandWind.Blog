@@ -3,7 +3,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace LandWind.Blog.Core.Domain.Repositories
 {
-    public interface ICategoryRepository: IRepository<Category, int>
+    public interface ICategoryRepository: IRepositoryBase<Category>
     {
     }
 }

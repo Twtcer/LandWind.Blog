@@ -74,9 +74,12 @@ namespace LandWind.Blog.Core.Dto.Blog
         public string Title { get; set; }
         public string Url { get; set; }
         public int Year { get; set; }
-        public string CreationTime { get; set; }
+        public DateTime CreationTime { get; set; }
     }
 
+    /// <summary>
+    /// 文章详情
+    /// </summary>
     public class PostDetailDto
     {
         public string Title { get; set; }
@@ -91,7 +94,7 @@ namespace LandWind.Blog.Core.Dto.Blog
 
         public List<TagDto> Tags { get; set; }
 
-        public string CreatedAt { get; set; }
+        public DateTime CreationTime { get; set; }
 
         public PostPagedDto Previous { get; set; }
 
