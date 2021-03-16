@@ -5,10 +5,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IP2Region;
+using LandWind.Blog.Core.DataAnnotation.Output;
 using LandWind.Blog.Core.Dto.Tools;
 using LandWind.Blog.Core.Extensions;
 using LandWind.Blog.Core.Options;
-using LandWind.Blog.Core.Response.Base;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -45,10 +45,10 @@ namespace LandWind.Blog.Application.Tool
         [Route("api/tool/bing/img")]
         public async Task<FileContentResult> GetBingBackgroundImgAsync()
         {
-            var url = (await GetBingBackgroundUrlAsync()).Result;
+            var ret = (await GetBingBackgroundUrlAsync()) as ResponseOutput<string>;
 
             using var client = _httpClient.CreateClient();
-            var bytes = await client.GetByteArrayAsync(url);
+            var bytes = await client.GetByteArrayAsync(ret.Data);
 
             return new FileContentResult(bytes, "image/jpeg");
         }
@@ -58,18 +58,15 @@ namespace LandWind.Blog.Application.Tool
         /// </summary>
         /// <returns></returns>
         [Route("api/tool/bing/url")]
-        public async Task<ResponseResult<string>> GetBingBackgroundUrlAsync()
-        {
-            var response = new ResponseResult<string>();
+        public async Task<IResponseOutput> GetBingBackgroundUrlAsync()
+        { 
             var apiUrl = "https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&pid=hp&FORM=BEHPTB";
 
             using var client = _httpClient.CreateClient();
-            var json = await client.GetStringAsync(apiUrl);
+            var json = await client.GetStringAsync(apiUrl); 
+            var obj = JObject.Parse(json); 
 
-            var obj = JObject.Parse(json);
-            response.Result = $"https://cn.bing.com{obj["images"].First()["url"]}";
-
-            return response;
+            return ResponseOutput.Ok($"https://cn.bing.com{obj["images"].First()["url"]}");
         }
 
         /// <summary>
@@ -93,9 +90,8 @@ namespace LandWind.Blog.Application.Tool
         /// <returns></returns>
         [HttpGet]
         [Route("api/tool/ip2region")]
-        public async Task<ResponseResult<List<string>>> Ip2RegionAsync(string ip)
-        {
-            var response = new ResponseResult<List<string>>();
+        public async Task<IResponseOutput> Ip2RegionAsync(string ip)
+        { 
             if (ip.IsNullOrEmpty())
             {
                 ip = _httpContextAccessor.HttpContext.Request.Headers["X-Real-IP"].FirstOrDefault() ??
@@ -105,9 +101,8 @@ namespace LandWind.Blog.Application.Tool
             else
             {
                 if (!ip.IsIp())
-                {
-                    response.IsFailed("The ip address error.");
-                    return response;
+                { 
+                    return ResponseOutput.NotOk("The ip address error.");
                 }
             }
 
@@ -116,9 +111,8 @@ namespace LandWind.Blog.Application.Tool
             var block = await _search.BinarySearchAsync(ip);
             var region = block.Region.Split("|").Distinct().Where(x => x != "0").ToList();
             region.AddFirst(ip);
-            response.Result = region;
 
-            return response;
+            return ResponseOutput.Ok(region);
         }
 
         /// <summary>
@@ -127,17 +121,15 @@ namespace LandWind.Blog.Application.Tool
         /// <param name="input"></param>
         /// <returns></returns>
         [Route("api/tool/sendmsg")]
-        public async Task<ResponseResult> SendMessageAsync(SendMessageInput input)
-        {
-            var response = new ResponseResult();
-            var content = new StringContent($"text={input.Text}&desp={input.Desc}");
-
+        public async Task<IResponseOutput> SendMessageAsync(SendMessageInput input)
+        { 
+            var content = new StringContent($"text={input.Text}&desp={input.Desc}"); 
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/x-www-form-urlencoded");
 
             using var client = _httpClient.CreateClient();
             await client.PostAsync($"{_ftqqOptions.ApiUrl}/{_ftqqOptions.Token}.send", content);
 
-            return response;
+            return ResponseOutput.Ok(content);
         }
     }
 }

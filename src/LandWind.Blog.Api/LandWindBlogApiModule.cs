@@ -14,8 +14,6 @@ using Volo.Abp.AspNetCore.Mvc;
 using LandWind.Blog.Core.Options;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
-using LandWind.Blog.Core.Response.Base;
-using System.Collections.Generic;
 using Volo.Abp.AspNetCore.Mvc.ExceptionHandling;
 using LandWind.Blog.Api.Filters;
 using Volo.Abp.Data;
@@ -27,6 +25,7 @@ using LandWind.Blog.Api.Swagger.Filters;
 using Swashbuckle.AspNetCore.Filters;
 using LandWind.Blog.BackgroundWorkers;
 using Volo.Abp.AspNetCore.Serilog;
+using LandWind.Blog.Core.DataAnnotation.Output;
 
 namespace LandWind.Blog.Api
 {
@@ -205,12 +204,9 @@ namespace LandWind.Blog.Api
                         {
                             context.HandleResponse();
                             context.Response.ContentType = "application/json;charset=utf-8";
-                            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                            context.Response.StatusCode = StatusCodes.Status401Unauthorized; 
 
-                            var response = new ResponseResult();
-                            response.IsFailed("Unauthorized");
-
-                            await context.Response.WriteAsJsonAsync(response);
+                            await context.Response.WriteAsJsonAsync(ResponseOutput.NotOk("Unauthorized"));
                         },
                         OnMessageReceived = async context =>
                         {

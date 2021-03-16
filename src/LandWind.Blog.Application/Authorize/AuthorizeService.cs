@@ -7,18 +7,18 @@ using LandWind.Blog.Application.Authorize.OAuth;
 using LandWind.Blog.Application.Caching.Authorize;
 using LandWind.Blog.Application.Tool;
 using LandWind.Blog.Application.Users;
+using LandWind.Blog.Core.DataAnnotation.Output;
 using LandWind.Blog.Core.Domain.Users;
 using LandWind.Blog.Core.Dto.Authorize;
 using LandWind.Blog.Core.Dto.Tools;
 using LandWind.Blog.Core.Extensions;
 using LandWind.Blog.Core.Options;
-using LandWind.Blog.Core.Response.Base;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace LandWind.Blog.Application.Authorize
-{ 
+{
     public class AuthorizeService : BlogAppServiceBase, IAuthorizeService
     {
         //private readonly Appsettings _appsettings;
@@ -49,22 +49,19 @@ namespace LandWind.Blog.Application.Authorize
         /// <param name="type"></param>
         /// <returns></returns>
         [Route("api/oauth/{type}")]
-        public async Task<ResponseResult<string>> GetAuthorizeUrlAsync(string type)
+        public async Task<IResponseOutput> GetAuthorizeUrlAsync(string type)
         {
-            var state = StateManager.Instance.Get();
-            var response = new ResponseResult<string>
+            var state = StateManager.Instance.Get();  
+            var result = type switch
             {
-                Result = type switch
-                {
-                    "" => await _githubService.GetAuthorizeUrlAsync(state),
-                    _ => throw new NotImplementedException($"Not implemented:{type}")
-                }
-            };
+                "github" => await _githubService.GetAuthorizeUrlAsync(state),
+                _ => throw new NotImplementedException($"Not implemented:{type}")
+            }; 
 
-            return response;
+            return ResponseOutput.Ok(result);
         }
 
-        public Task<ResponseResult<string>> GenerateTokenAsync([Required] string code)
+        public Task<IResponseOutput> GenerateTokenAsync([Required] string code)
         {
             throw new NotImplementedException();
         }
@@ -78,13 +75,11 @@ namespace LandWind.Blog.Application.Authorize
         /// <returns></returns>
         [HttpGet]
         [Route("api/oauth/{type}/token")]
-        public async Task<ResponseResult<string>> GenerateTokenAsync(string type, string code, string state)
+        public async Task<IResponseOutput> GenerateTokenAsync(string type, string code, string state)
         {
-            var response = new ResponseResult<string>();
             if (!StateManager.IsExist(state))
             {
-                response.IsFailed("Request failed");
-                return response;
+                return ResponseOutput.NotOk("Request failed");
             }
 
             StateManager.Remove(state);
@@ -93,9 +88,8 @@ namespace LandWind.Blog.Application.Authorize
                 "github" => GenerateToken(await _githubService.GetUserByOAuthAsync(type, code, state)),
                 _ => throw new NotImplementedException($"Not implemented {type}")
             };
-            response.IsSuccess(token);
 
-            return response;
+            return ResponseOutput.Ok(token);
         }
 
         /// <summary>
@@ -105,14 +99,12 @@ namespace LandWind.Blog.Application.Authorize
         /// <param name="input"></param>
         /// <returns></returns>
         [Route("api/oauth/account/token")]
-        public async Task<ResponseResult<string>> GenerateTokenAsync([FromServices] IUserService userService, AccountInput input)
-        {
-            var response = new ResponseResult<string>();
+        public async Task<IResponseOutput> GenerateTokenAsync([FromServices] IUserService userService, AccountInput input)
+        { 
             var user = await userService.VerifyByAccountAsync(input.Username, input.Password);
-            var token = GenerateToken(user);
-            response.IsSuccess(token);
+            var token = GenerateToken(user); 
 
-            return await Task.FromResult(response);
+            return await Task.FromResult(ResponseOutput.Ok(token));
         }
 
         /// <summary>
@@ -120,9 +112,8 @@ namespace LandWind.Blog.Application.Authorize
         /// </summary>
         /// <returns></returns>
         [Route("api/oauth/code/send")]
-        public async Task<ResponseResult> SendAuthorizeCodeAsync()
-        {
-            var response = new ResponseResult();
+        public async Task<IResponseOutput> SendAuthorizeCodeAsync()
+        {  
             var length = 6;
             var code = length.GenerateRandomCode();
             await _authorizeCacheService.AddAuthorizeCodeAsync(code);
@@ -130,7 +121,7 @@ namespace LandWind.Blog.Application.Authorize
                 Text  =code
             });
 
-            return response;
+            return ResponseOutput.Ok();
         }
 
         private string GenerateToken(User user)

@@ -1,4 +1,5 @@
-﻿using LandWind.Blog.Core.Extensions; 
+﻿using LandWind.Blog.Core.DataAnnotation.Output;
+using LandWind.Blog.Core.Extensions; 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -21,13 +22,10 @@ namespace LandWind.Blog.Api.Filters
         {
             Log.Logger = new LoggerConfiguration().CreateLogger();
             if (context.Exception != null)
-            {
-                var result = new ResponseResult();
-                result.IsFailed(context.Exception.Message);
-
+            {   
                 context.Result = new ContentResult()
                 {
-                    Content = result.SerializeToJson(),
+                    Content = ResponseOutput.Error(context.Exception.Message, context.Exception).SerializeToJson(),
                     StatusCode = StatusCodes.Status200OK
                 };
 

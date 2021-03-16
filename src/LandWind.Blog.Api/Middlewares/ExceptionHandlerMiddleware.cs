@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using LandWind.Blog.Core.DataAnnotation.Output;
 using LandWind.Blog.Core.Extensions;
-using LandWind.Blog.Core.Response.Base;
 using Microsoft.AspNetCore.Http;
 
 namespace LandWind.Blog.Api.Middleware
@@ -47,12 +47,9 @@ namespace LandWind.Blog.Api.Middleware
         /// <returns></returns>
         private async Task ExceptionHandlerAsync(HttpContext context, string message)
         {
-            context.Response.ContentType = "application/json;charset=utf-8";
+            context.Response.ContentType = "application/json;charset=utf-8";   
 
-            var result = new ResponseResult();
-            result.IsFailed(message);
-
-            await context.Response.WriteAsync(result.SerializeToJson());
+            await context.Response.WriteAsync(ResponseOutput.Error(message).SerializeToJson());
         }
     }
 }

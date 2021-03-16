@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text; 
-using LandWind.Blog.Core.Response.Base;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LandWind.Blog.Core.Dto.Tools;
+using LandWind.Blog.Core.DataAnnotation.Output;
 
 namespace LandWind.Blog.Application.Tool
 {
     public interface IToolService
     {
-        Task<ResponseResult<string>> GetBingBackgroundUrlAsync();
+        Task<IResponseOutput> GetBingBackgroundUrlAsync();
 
         Task<FileContentResult> GetBingBackgroundImgAsync();
 
-        Task<ResponseResult<List<string>>> Ip2RegionAsync(string ip);
+        Task<IResponseOutput> Ip2RegionAsync(string ip);
 
-        Task<ResponseResult> SendMessageAsync(SendMessageInput input);
+        Task<IResponseOutput> SendMessageAsync(SendMessageInput input);
 
         Task<FileContentResult> GetImgAsync(string url);
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using LandWind.Blog.Core.Response.Base;
 
 namespace LandWind.Blog.Application.Caching.Authorize
 {

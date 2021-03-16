@@ -25,8 +25,8 @@ namespace LandWind.Blog.EntityFrameworkCore
             {
                 b.ToTable(LandWindBlogDbConsts.DbTablePrefix + DbTableName.Categories);
                 b.HasKey(x => x.Id);
-                b.Property(x => x.CategoryName).HasMaxLength(50).IsRequired();
-                b.Property(x => x.DisplayName).HasMaxLength(50).IsRequired();
+                b.Property(x => x.Name).HasMaxLength(50).IsRequired();
+                b.Property(x => x.Alias).HasMaxLength(50).IsRequired();
             });
 
             builder.Entity<Tag>(b =>

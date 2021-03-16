@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using AutoMapper;
 
@@ -55,6 +56,21 @@ namespace LandWind.Blog.Core.DataAnnotation.Output
 
             return this;
         }
+
+        /// <summary>
+        /// 异常
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="exception"></param>
+        /// <returns></returns>
+        public ResponseOutput<T> Error(string msg, T exception = default(T))
+        {
+            Success = false;
+            Msg = msg;
+            Data = exception;
+
+            return this;
+        }
     }
 
     /// <summary>
@@ -108,6 +124,17 @@ namespace LandWind.Blog.Core.DataAnnotation.Output
         public static IResponseOutput NotOk(string msg = null)
         {
             return new ResponseOutput<string>().NotOk(msg);
+        }
+
+        /// <summary>
+        /// 错误异常
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="exception"></param>
+        /// <returns></returns>
+        public static IResponseOutput Error(string msg, Exception exception=null)
+        {
+            return new ResponseOutput<Exception>().Error(msg,exception);
         }
 
         /// <summary>

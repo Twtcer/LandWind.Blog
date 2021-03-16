@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LandWind.Blog.Core.DataAnnotation.Output;
 using LandWind.Blog.Core.Dto.Blog;
-using LandWind.Blog.Core.Response.Base;
 
 namespace LandWind.Blog.Core.Caching
 {
@@ -15,14 +15,14 @@ namespace LandWind.Blog.Core.Caching
         /// <param name="limit"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        Task<ResponseResult<PagedList<QueryDto>>> GetPageAsync(int page, int limit, Func<Task<ResponseResult<PagedList<QueryDto>>>> func);
+        Task<IResponseOutput> GetPageAsync(int page, int limit, Func<Task<IResponseOutput<QueryDto>>> func);
 
         /// <summary>
         /// 获取列表
         /// </summary>
         /// <param name="func"></param>
         /// <returns></returns>
-        Task<ResponseResult<List<QueryDto>>> GetListAsync(Func<Task<ResponseResult<List<QueryDto>>>> func);
+        Task<IResponseOutput> GetListAsync(Func<Task<IResponseOutput<List<QueryDto>>>> func);
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ namespace LandWind.Blog.Core.Caching
         /// <param name="url"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        Task<ResponseResult<PostDetailDto>> GetPostByUrlAsync(string url, Func<Task<ResponseResult<PostDetailDto>>> func);
+        Task<IResponseOutput> GetPostByUrlAsync(string url, Func<Task<IResponseOutput<PostDetailDto>>> func);
 
         /// <summary>
         /// Get the list of posts by category from the cache.
@@ -44,7 +44,7 @@ namespace LandWind.Blog.Core.Caching
         /// <param name="category"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        Task<ResponseResult<List<QueryPostDto>>> GetPostsByCategoryAsync(string category, Func<Task<ResponseResult<List<QueryPostDto>>>> func);
+        Task<IResponseOutput> GetPostsByCategoryAsync(string category, Func<Task<IResponseOutput<List<QueryPostDto>>>> func);
 
         /// <summary>
         /// Get the list of posts by tag from the cache.
@@ -52,7 +52,7 @@ namespace LandWind.Blog.Core.Caching
         /// <param name="tag"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        Task<ResponseResult<List<QueryPostDto>>> GetPostsByTagAsync(string tag, Func<Task<ResponseResult<List<QueryPostDto>>>> func);
+        Task<IResponseOutput> GetPostsByTagAsync(string tag, Func<Task<IResponseOutput<List<QueryPostDto>>>> func);
     }
 
     /// <summary>

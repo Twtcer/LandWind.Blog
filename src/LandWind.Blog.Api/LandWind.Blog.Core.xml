@@ -356,6 +356,14 @@
             <param name="data">数据</param>
             <returns></returns>
         </member>
+        <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput`1.Error(System.String,`0)">
+            <summary>
+            异常
+            </summary>
+            <param name="msg"></param>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
         <member name="T:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput">
             <summary>
             响应数据静态输出
@@ -390,6 +398,14 @@
             失败
             </summary> 
             <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput.Error(System.String,System.Exception)">
+            <summary>
+            错误异常
+            </summary>
+            <param name="msg"></param>
+            <param name="exception"></param>
             <returns></returns>
         </member>
         <member name="M:LandWind.Blog.Core.DataAnnotation.Output.ResponseOutput.Result``1(System.Boolean)">
@@ -496,49 +512,6 @@
             展示名称
             </summary>
         </member>
-        <member name="M:LandWind.Blog.Core.Domain.Repositories.IPostRepository.GetPagedListAsync(System.Int32,System.Int32)">
-            <summary>
-            Get post list by paging.
-            </summary>
-            <param name="skipCount"></param>
-            <param name="maxResultCount"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LandWind.Blog.Core.Domain.Repositories.IPostRepository.GetListByCategoryAsync(System.String)">
-            <summary>
-            Get post list by category.
-            </summary>
-            <param name="category"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LandWind.Blog.Core.Domain.Repositories.IPostRepository.GetListByTagAsync(System.String)">
-            <summary>
-            Get post list by tag.
-            </summary>
-            <param name="tag"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LandWind.Blog.Core.Domain.Repositories.IPostRepository.GetCountByCategoryAsync(System.Int32)">
-            <summary>
-            Get post count by category id
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LandWind.Blog.Core.Domain.Repositories.IPostRepository.GetCountByTagAsync(System.Int32)">
-            <summary>
-            Get post count by tag id
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LandWind.Blog.Core.Domain.Repositories.ITagRepository.GetListAsync(System.Collections.Generic.List{System.String})">
-            <summary>
-            Get tag list by names
-            </summary>
-            <param name="names"></param>
-            <returns></returns>
-        </member>
         <member name="T:LandWind.Blog.Core.Domain.IBulkInsert`1">
             <summary>
             批量插入接口
@@ -556,43 +529,6 @@
             </summary>
             <typeparam name="TEntity"></typeparam>
             <typeparam name="TKey"></typeparam>
-        </member>
-        <member name="M:LandWind.Blog.Core.Domain.IRepositoryBase`2.GetAsync``1(`1)">
-            <summary>
-            获取对象Dto
-            </summary>
-            <typeparam name="TDto"></typeparam>
-            <param name="key"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LandWind.Blog.Core.Domain.IRepositoryBase`2.GetAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-            根据条件获取对象实体Dto
-            </summary>
-            <typeparam name="TDto"></typeparam>
-            <param name="expression"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LandWind.Blog.Core.Domain.IRepositoryBase`2.GetAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-            根据条件获取实体
-            </summary>
-            <param name="exp"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LandWind.Blog.Core.Domain.IRepositoryBase`2.DeleteAsync(`1)">
-            <summary>
-            删除
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:LandWind.Blog.Core.Domain.IRepositoryBase`2.BatchDeleteAsync(`1[])">
-            <summary>
-            批量删除
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
         </member>
         <member name="T:LandWind.Blog.Core.Domain.Users.Repositories.IUserRepository">
             <summary>

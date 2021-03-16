@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using LandWind.Blog.Core.DataAnnotation.Output;
 using LandWind.Blog.Core.Dto.Users;
-using LandWind.Blog.Core.Extensions;
-using LandWind.Blog.Core.Response.Base;
+using LandWind.Blog.Core.Extensions; 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
@@ -41,7 +41,7 @@ namespace LandWind.Blog.Admin.Services
                 }
 
                 var response = await httpResponse.Content.ReadAsStringAsync();
-                var user = response.Deserialize<ResponseResult<UserDto>>().Result;
+                var user = response.Deserialize<UserDto>();
 
                 if (user is null)
                 {
@@ -66,9 +66,9 @@ namespace LandWind.Blog.Admin.Services
         public async Task GetOAuthUrl(string type)
         {
             var json = await http.GetStringAsync($"/api/oauth/{type}");
-            var response = json.Deserialize<ResponseResult<string>>();
+            var response = json.Deserialize<IResponseOutput<string>>();
 
-            _navigationManager.NavigateTo(response.Success ? response.Result : "/Login");
+            _navigationManager.NavigateTo(response.Success ? response.Data : "/Login");
         }
 
         private AuthenticationState GetNullState()

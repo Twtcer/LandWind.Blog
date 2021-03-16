@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LandWind.Blog.Core.Caching;
+using LandWind.Blog.Core.DataAnnotation.Output;
 using LandWind.Blog.Core.Dto.Blog;
-using LandWind.Blog.Core.Response.Base;
 
 namespace LandWind.Blog.Application.Caching
 {
@@ -25,7 +25,7 @@ namespace LandWind.Blog.Application.Caching
         /// </summary>
         /// <param name="func"></param>
         /// <returns></returns>
-        public async Task<ResponseResult<List<DtoT>>> GetListAsync(Func<Task<ResponseResult<List<DtoT>>>> func)
+        public async Task<IResponseOutput> GetListAsync(Func<Task<IResponseOutput<List<DtoT>>>> func)
         {
             var key = CacheKeyDict[typeof(DtoT)];  
             return await Cache.GetOrAddAsync(key, func, cacheStrategy);
@@ -38,7 +38,7 @@ namespace LandWind.Blog.Application.Caching
         /// <param name="limit"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        public async Task<ResponseResult<PagedList<DtoT>>> GetPageAsync(int page, int limit, Func<Task<ResponseResult<PagedList<DtoT>>>> func)
+        public async Task<IResponseOutput> GetPageAsync(int page, int limit, Func<Task<IResponseOutput<DtoT>>> func)
         {
             var key = CacheKeyDict[typeof(DtoT)];
             if (typeof(DtoT) == typeof(QueryPostDto))
@@ -46,6 +46,11 @@ namespace LandWind.Blog.Application.Caching
                 key = ApplicationCachingConsts.CacheKeys.GetPosts(page, limit);
             }
             return await Cache.GetOrAddAsync(key, func, cacheStrategy);
+        }
+
+        Task<IResponseOutput> IBlogCacheService<DtoT>.GetListAsync(Func<Task<IResponseOutput<List<DtoT>>>> func)
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -60,7 +65,7 @@ namespace LandWind.Blog.Application.Caching
         /// <param name="url"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        public async Task<ResponseResult<PostDetailDto>> GetPostByUrlAsync(string url, Func<Task<ResponseResult<PostDetailDto>>> func)
+        public async Task<IResponseOutput> GetPostByUrlAsync(string url, Func<Task<IResponseOutput<PostDetailDto>>> func)
         {
             return await Cache.GetOrAddAsync(ApplicationCachingConsts.CacheKeys.GetPostByUrl(url), func, cacheStrategy);
         }
@@ -71,7 +76,7 @@ namespace LandWind.Blog.Application.Caching
         /// <param name="category"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        public async Task<ResponseResult<List<QueryPostDto>>> GetPostsByCategoryAsync(string category, Func<Task<ResponseResult<List<QueryPostDto>>>> func)
+        public async Task<IResponseOutput> GetPostsByCategoryAsync(string category, Func<Task<IResponseOutput<List<QueryPostDto>>>> func)
         {
             return await Cache.GetOrAddAsync(ApplicationCachingConsts.CacheKeys.GetPostsByCategory(category), func, cacheStrategy);
         }
@@ -82,7 +87,7 @@ namespace LandWind.Blog.Application.Caching
         /// <param name="tag"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        public async Task<ResponseResult<List<QueryPostDto>>> GetPostsByTagAsync(string tag, Func<Task<ResponseResult<List<QueryPostDto>>>> func)
+        public async Task<IResponseOutput> GetPostsByTagAsync(string tag, Func<Task<IResponseOutput<List<QueryPostDto>>>> func)
         {
             return await Cache.GetOrAddAsync(ApplicationCachingConsts.CacheKeys.GetPostsByTag(tag), func, cacheStrategy);
         }
